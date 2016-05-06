@@ -15,3 +15,13 @@ body {
 #tabla .table {
     background-color: white;
 }
+
+#caja .well {
+    width: 75%;
+    float: center;
+}
+
+.boton-menu {
+    color: black;
+    font-size: 150%;
+}
