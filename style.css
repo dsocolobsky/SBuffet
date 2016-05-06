@@ -1,0 +1,17 @@
+body {
+    background-color: orange;
+    height: 100%;
+}
+
+#wrapper {
+    width: 1000px;
+}
+
+#wrapper .container {
+        max-width: 100%;
+        display: block;
+}
+
+#tabla .table {
+    background-color: white;
+}
