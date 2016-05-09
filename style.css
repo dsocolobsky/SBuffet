@@ -14,6 +14,7 @@ body {
 
 #tabla .table {
     background-color: white;
+    empty-cells: show;
 }
 
 #caja .well {
