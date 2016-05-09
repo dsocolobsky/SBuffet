@@ -17,7 +17,7 @@
 	        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 	        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 	    <![endif]-->
-    <title>SBuffet - Pedidos</title>
+    <title>SBuffet</title>
 </head>
 
 <body>
@@ -32,13 +32,10 @@
             <div class="col-md-12">
                 <div class="btn-group btn-group-justified" role="group" aria-label="Basic example">
                     <div class="btn-group" role="group">
-                        <a href="pedidos.html"><button type="button" class="btn btn-info boton-menu">Pedidos</button></a>
+                       <a href="index.html"><button type="button" class="btn btn-info boton-menu">Menu</button></a>
                     </div>
                     <div class="btn-group" role="group">
-                        <a href="productos.html"><button type="button" class="btn btn-info boton-menu">Productos</button></a>
-                    </div>
-                    <div class="btn-group" role="group">
-                        <a href="usuarios.html"><button type="button" class="btn btn-info boton-menu">Usuarios</button></a>
+                        <a href="usuario.html"><button type="button" class="btn btn-info boton-menu">Usuario</button></a>
                     </div>
                     <div class="btn-group" role="group">
                         <a href="login.html"><button type="button" class="btn btn-info boton-menu">Salir</button></a>
@@ -50,60 +47,64 @@
 
         <div class="row-fluid">
             <div class="col-sm-6">
-                <h3>Pendientes</h3>
+                <h3>Datos de Usuario</h3>
                 <div id="tabla">
                     <table class="table table-responsive">
                         <tr>
                             <td><strong>Codigo</strong></td>
-                            <td><strong>Producto</strong></td>
-                            <td><strong>Cantidad</strong></td>
-                            <td><strong>Valor Total</strong></td>
-                            <td><strong>Entregar</strong></td>
+                            <td><strong>Nombre de Usuario</strong></td>
+                            <td><strong>Nombre</strong></td>
+                            <td><strong>Apellido</strong></td>
+                            <td><strong>Saldo</strong></td>
                         </tr>
                         <tr>
-                            <td>512</td>
-                            <td>Milanesa</td>
-                            <td>4</td>
-                            <td>$120</td>
-                            <td><button type="button" class="btn btn-success btn-sm">Listo</button></td>
-                        </tr>
-                        <tr>
-                            <td>674</td>
-                            <td>Hamburguesa</td>
-                            <td>2</td>
-                            <td>$60</td>
-                            <td><button type="button" class="btn btn-success btn-sm">Listo</button></td>
-                        </tr>
-                        <tr>
-                            <td>941</td>
-                            <td>Pata muslo</td>
                             <td>1</td>
-                            <td>$40</td>
-                            <td><button type="button" class="btn btn-success btn-sm">Listo</button></td>
+                            <td>dsocolobsky</td>
+                            <td>Dylan</td>
+                            <td>Socolobsky</td>
+                            <td>$500</td>
                         </tr>
                     </table>
+                </div>
+
+                <div id="caja">
+                    <div class="well clearfix">
+                        <h4><strong>Cambiar Contraseña</strong></h4>
+                        <br>
+                        <form action="post">
+                            <input type="text" name="usuario" class="form-control" style="width: 60%;" placeholder="Contraseña" required>
+                            <br>
+                            <input type="text" name="usuario" class="form-control" style="width: 60%;" placeholder="Nueva Contraseña" required>
+                            <br>
+                            <input type="text" name="usuario" class="form-control" style="width: 60%;" placeholder="Confimar Contraseña" required>
+                            <br>
+                            <div id="boton-comprar">
+                                <button type="button" class="btn btn-lg btn-success pull-right">Aceptar</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
 
             <div class="col-sm-6">
-                <h3>Entregados</h3>
+                <h3>Historial de Compras</h3>
                 <div id="tabla">
                     <table class="table table-responsive">
                         <tr>
-                            <td><strong>Codigo</strong></td>
+                            <td><strong>Fecha</strong></td>
                             <td><strong>Producto</strong></td>
                             <td><strong>Cantidad</strong></td>
-                            <td><strong>Valor Total</strong></td>
+                            <td><strong>Precio Total</strong></td>
                         </tr>
                         <tr>
-                            <td>538</td>
-                            <td>Milanesa</td>
-                            <td>1</td>
-                            <td>$20</td>
+                            <td>4/5/2016</td>
+                            <td>Hamburguesa</td>
+                            <td>2</td>
+                            <td>$60</td>
                         </tr>
+
                     </table>
                 </div>
-
             </div>
 
             <div class="clearfix"></div>
