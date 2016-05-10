@@ -4,6 +4,7 @@ use \Psr\Http\Message\ResponseInterface as Response;
 
 require '../vendor/autoload.php';
 require '../app/producto.php';
+require '../app/usuario.php';
 
 $config['displayErrorDetails'] = true;
 $config['base_url'] = "app/";
@@ -29,9 +30,11 @@ $structure = new NotORM_Structure_Discovery($pdo, $cache = null, $foreign = '%s'
 $database = new NotORM($pdo, $structure);
 
 $app->get('/', function ($request, $response) use($app, $database) {
+    $usuario = obtenerUsuario(1, $app, $database);
     $productos = obtenerProductos($app, $database);
     
     return $this->view->render($response, 'menu.html', array(
+        'usuario' => $usuario,
         'productos' => $productos
     ));
 });
@@ -43,6 +46,18 @@ $app->get('/login', function ($request, $response) use($app) {
 $app->get('/registro', function ($request, $response) use($app) {
     return $this->view->render($response, 'login.html');
 });
+
+$app->get('/usuario', function ($request, $response) use($app, $database) {
+    $usuario = obtenerUsuario(1, $app, $database);
+    return $this->view->render($response, 'usuario.html', array (
+        'usuario' => $usuario
+    ));
+});
+
+function obtenerUsuario($id, $app, $database) {
+    $usuario = $database->usuarios[$id];
+    return new Usuario($usuario, $app, $database);
+}
 
 function obtenerProductos($app, $database) {
     $productos = array();
