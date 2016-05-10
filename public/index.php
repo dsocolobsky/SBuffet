@@ -54,9 +54,30 @@ $app->get('/usuario', function ($request, $response) use($app, $database) {
     ));
 });
 
+$app->get('/productos', function ($request, $response) use($app, $database) {
+    $usuario = obtenerUsuario(1, $app, $database);
+    $productos = obtenerProductos($app, $database);
+    
+    return $this->view->render($response, 'productos.html', array (
+        'usuario' => $usuario,
+        'productos' => $productos
+    ));
+});
+
 function obtenerUsuario($id, $app, $database) {
     $usuario = $database->usuarios[$id];
     return new Usuario($usuario, $app, $database);
+}
+
+function obtenerUsuarios($app, $database) {
+    $usuarios = array();
+    $tabla_usuarios = $database->usuarios();
+    
+    foreach ($tabla_usuarios as $usuario) {
+        array_push($usuarios, new Usuario($usuario, $app, $database));
+    }
+    
+    return $usuarios;
 }
 
 function obtenerProductos($app, $database) {

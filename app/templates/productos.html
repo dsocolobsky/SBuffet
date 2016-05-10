@@ -1,0 +1,43 @@
+{% extends "base.html" %} 
+{% block content %}
+<div class="container" style="background-color: white;">
+
+    {% include 'header-buffet.html' %}
+
+    <div class="row-fluid">
+        <div class="col-sm-10">
+            <h3>Productos</h3>
+            <div id="tabla">
+                <table class="table table-responsive">
+                    <tr>
+                        <td><strong>Producto</strong></td>
+                        <td><strong>Precio</strong></td>
+                        <td><strong>Disponibilidad</strong></td>
+                        <td><strong>Borrar</strong></td>
+                    </tr>
+                    {% for producto in productos %}
+                    <tr>
+                        <td>{{ producto.nombre|e }}</td>
+                        <td>${{ producto.precio|e }}</td>
+                        <td><input type="checkbox" name="disponibilidad" value="disponibilidad"></td>
+                        <td><button type="button" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+
+        <div class="col-sm-2">
+            <h3>Agregar Producto</h3>
+            <div id="tabla">
+                <table class="table table-responsive">
+                    <button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+                </table>
+            </div>
+        </div>
+
+        {% include 'footer.html' %}
+
+    </div>
+    </body>
+{% endblock %}    
