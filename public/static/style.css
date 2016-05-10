@@ -38,3 +38,9 @@ body {
   display: flex;
   align-items: center;
 }
+
+.logo {
+    margin-left: 24px;
+    width: 80%;
+    height: 80%;
+}
