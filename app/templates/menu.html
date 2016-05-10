@@ -16,7 +16,7 @@
                         <tr>
                             <td>{{ producto.nombre|e }}</td>
                             <td>${{ producto.precio|e }}</td>
-                            <td><input type="checkbox" name="milanesa" value="milanesa"></td>
+                            <td><button type="button" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button></td>
                         </tr>
                         {% endif %}
                         {% endfor %}
@@ -31,14 +31,8 @@
                         <tr>
                             <td>Hamburguesa</td>
                             <td>$20</td>
-                            <td><input type="checkbox" name="milanesa" value="milanesa"></td>
+                            <td><button type="button" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button></td>
                         </tr>
-                        <tr>
-                            <td>Hamburguesa</td>
-                            <td>$20</td>
-                            <td><input type="checkbox" name="milanesa" value="milanesa"></td>
-                        </tr>
-
                     </table>
                 </div>
 
