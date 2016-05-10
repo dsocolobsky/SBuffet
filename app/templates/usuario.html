@@ -2,28 +2,8 @@
 
 {% block content %}
 <div class="container" style="background-color: white;">
-    <div class="row-fluid">
-
-        <div class="col-md-12"><img src="/static/newbanner.png" class="img-responsive"></div>
-    </div>
-
-
-    <div class="row-fluid">
-        <div class="col-md-12">
-            <div class="btn-group btn-group-justified" role="group" aria-label="Basic example">
-                <div class="btn-group" role="group">
-                    <a href="/"><button type="button" class="btn btn-info boton-menu">Menu</button></a>
-                </div>
-                <div class="btn-group" role="group">
-                    <a href="/usuario"><button type="button" class="btn btn-info boton-menu">Usuario</button></a>
-                </div>
-                <div class="btn-group" role="group">
-                    <a href="/logout"><button type="button" class="btn btn-info boton-menu">Salir</button></a>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    
+    {% include 'header.html' %}
 
     <div class="row-fluid">
         <div class="col-sm-6">
@@ -87,11 +67,7 @@
             </div>
         </div>
 
-        <div class="clearfix"></div>
-
-        <div class="row-fluid">
-            <div class="col-md-12"><img src="footer.png" class="img-responsive"></div>
-        </div>
+        {% include 'footer.html' %}
 
     </div>
     {% endblock %}
