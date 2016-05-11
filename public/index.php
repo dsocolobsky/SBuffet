@@ -29,50 +29,6 @@ $pdo = new PDO($database_data, "root", "root");
 $structure = new NotORM_Structure_Discovery($pdo, $cache = null, $foreign = '%s');
 $database = new NotORM($pdo, $structure);
 
-$app->get('/', function ($request, $response) use($app, $database) {
-    $usuario = obtenerUsuario(1, $app, $database);
-    $productos = obtenerProductos($app, $database);
-    
-    return $this->view->render($response, 'menu.html', array(
-        'usuario' => $usuario,
-        'productos' => $productos
-    ));
-});
-
-$app->get('/login', function ($request, $response) use($app) {
-    return $this->view->render($response, 'login.html');
-});
-
-$app->get('/registro', function ($request, $response) use($app) {
-    return $this->view->render($response, 'login.html');
-});
-
-$app->get('/usuario', function ($request, $response) use($app, $database) {
-    $usuario = obtenerUsuario(1, $app, $database);
-    return $this->view->render($response, 'usuario.html', array (
-        'usuario' => $usuario
-    ));
-});
-
-$app->get('/productos', function ($request, $response) use($app, $database) {
-    $usuario = obtenerUsuario(1, $app, $database);
-    $productos = obtenerProductos($app, $database);
-    
-    return $this->view->render($response, 'productos.html', array (
-        'usuario' => $usuario,
-        'productos' => $productos
-    ));
-});
-
-$app->get('/compra', function ($request, $response) use($app) {
-    
-});
-
-$app->post('/compra', function ($request, $response) use($app) {
-    echo $request->getParsedBody();
-    die();
-});
-
 function obtenerUsuario($id, $app, $database) {
     $usuario = $database->usuarios[$id];
     return new Usuario($usuario, $app, $database);
@@ -99,5 +55,7 @@ function obtenerProductos($app, $database) {
     
     return $productos;
 }
+
+require '../app/router.php';
 
 $app->run();
