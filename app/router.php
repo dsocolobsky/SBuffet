@@ -43,6 +43,14 @@ $app->post('/compra', function ($request, $response) use($app, $database) {
     realizarPedido($productos, $app, $database);
 });
 
+$app->get('/pedidos', function ($request, $response) use($app, $database) {
+    $pendientes = obtenerPedidosActivos($app, $database);
+    
+    return $this->view->render($response, 'pedidos.html', array (
+        'pendientes' => $pendientes
+    ));
+});
+
 $app->get('/usuarios', function ($request, $response) use($app, $database) {
     $usuarios = obtenerUsuarios($app, $database);
     

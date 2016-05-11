@@ -1,0 +1,54 @@
+{% extends "base.html" %} {% block content %}
+<div class="container" style="background-color: white;">
+
+    {% include 'header-buffet.html' %}
+
+    <div class="row-fluid">
+        <div class="col-sm-6">
+            <h3>Pendientes</h3>
+            <div id="tabla">
+                <table class="table table-responsive">
+                    <tr>
+                        <td><strong>Codigo</strong></td>
+                        <td><strong>Producto</strong></td>
+                        <td><strong>Precio</strong></td>
+                        <td><strong>Entregar</strong></td>
+                    </tr>
+                    {% for pedido in pendientes %}
+                    <tr>
+                        <td>{{ pedido.usuario|e }}</td>
+                        <td>{{ pedido.nombreProducto|e }}</td>
+                        <td>{{ pedido.precio|e }}</td>
+                        <td><button type="button" class="btn btn-success btn-sm">Listo</button></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <h3>Entregados</h3>
+            <div id="tabla">
+                <table class="table table-responsive">
+                    <tr>
+                        <td><strong>Codigo</strong></td>
+                        <td><strong>Producto</strong></td>
+                        <td><strong>Cantidad</strong></td>
+                        <td><strong>Valor Total</strong></td>
+                    </tr>
+                    <tr>
+                        <td>538</td>
+                        <td>Milanesa</td>
+                        <td>1</td>
+                        <td>$20</td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+
+        {% include 'footer.html' %}
+
+    </div>
+    </body>
+    {% endblock %}
