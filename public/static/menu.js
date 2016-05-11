@@ -1,9 +1,9 @@
 var p_precio = $("#total").find("p");
-var total = precioReal(p_precio.html()); 
+var total = precioReal(p_precio.html());
 
 $("#tabla > table > tbody > tr").each(function (i, row) {
     var button = $(this).find("td").find("button");
-    button.click(function () {
+    button.unbind('click').bind('click', function () {
         var nombre = $(this).parent().parent().find("td").eq(0).html();
         var precio = $(this).parent().parent().find("td").eq(1).html();
         var id = $(this).attr("name").replace("producto", "");
@@ -21,25 +21,26 @@ $("#tabla > table > tbody > tr").each(function (i, row) {
         );
 
         cambiarTotal(true, precioReal(precio));
+        console.log("called1");
     });
 });
 
-$('body').on('click', function() {
-console.log("click");
-$("#tabla2 > table > tbody > tr").each(function (i, row) {
+$('body').on('click', function () {
+    $("#tabla2 > table > tbody > tr").each(function (i, row) {
         if (i != 0) {
             var button = $(this).find("td").find("button");
-            button.click(function () {
+            button.unbind('click').bind('click', (function () {
                 var tr = $(this).parent().parent();
-                
+
                 var precio = precioReal(tr.find("td").eq(1).html());
+
                 cambiarTotal(false, precio);
-                
+
                 tr.remove();
-            });
+            }));
         }
     });
-});    
+});
 
 function cambiarTotal(mas, valor) {
     if (mas) {
@@ -47,7 +48,7 @@ function cambiarTotal(mas, valor) {
     } else {
         total = total - valor;
     }
-    console.log(total);
+
     p_precio.html("$" + total);
 }
 
