@@ -59,12 +59,29 @@ function obtenerProductos($app, $database) {
 }
 
 function realizarPedido($productos, $app, $database) {
+    $saldo = $database->usuarios[1]['saldo'];
+    $precio_total = 0.00;
+    
+    foreach ($productos as $producto) {
+        $precio = $database->productos[$producto]['precio'];
+        $precio_total += $precio;
+    }
+    
+    $nsaldo = $saldo - $precio_total; 
+    if ($nsaldo < 0.00) {
+        return;
+    }
+    
+    $affected = $database->usuarios[1]->update(array (
+        "saldo" => $saldo - $precio_total
+    ));
+    
     foreach ($productos as $producto) {
         $pedido = $database->pedidos()->insert(array (
-            "usuario" => 1,
-            "producto" => $producto,
-            "hora_compra" => new NotORM_Literal("NOW()")
-        ));
+                "usuario" => 1,
+                "producto" => $producto,
+                "hora_compra" => new NotORM_Literal("NOW()")
+            ));
     }
 }
 
