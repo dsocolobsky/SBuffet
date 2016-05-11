@@ -53,16 +53,15 @@
                     <tr>
                         <td><strong>Fecha</strong></td>
                         <td><strong>Producto</strong></td>
-                        <td><strong>Cantidad</strong></td>
-                        <td><strong>Precio Total</strong></td>
+                        <td><strong>Precio</strong></td>
                     </tr>
+                    {% for pedido in historial %}
                     <tr>
-                        <td>4/5/2016</td>
-                        <td>Hamburguesa</td>
-                        <td>2</td>
-                        <td>$60</td>
+                        <td>{{ pedido.hora_compra|e }}</td>
+                        <td>{{ pedido.nombreProducto|e }}</td>
+                        <td>{{ pedido.precio|e }}</td>
                     </tr>
-
+                    {% endfor %}
                 </table>
             </div>
         </div>

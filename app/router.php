@@ -19,9 +19,12 @@ $app->get('/registro', function ($request, $response) use($app) {
 });
 
 $app->get('/usuario', function ($request, $response) use($app, $database) {
-    $usuario = obtenerUsuario(1, $app, $database);
+    $usuario = obtenerUsuario('1', $app, $database);
+    $historial = obtenerHistorialPedidosUsuario('1', $app, $database);
+    
     return $this->view->render($response, 'usuario.html', array (
-        'usuario' => $usuario
+        'usuario' => $usuario,
+        'historial' => $historial
     ));
 });
 

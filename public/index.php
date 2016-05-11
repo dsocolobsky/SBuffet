@@ -5,6 +5,7 @@ use \Psr\Http\Message\ResponseInterface as Response;
 require '../vendor/autoload.php';
 require '../app/producto.php';
 require '../app/usuario.php';
+require '../app/pedido.php';
 
 $config['displayErrorDetails'] = true;
 $config['base_url'] = "app/";
@@ -56,6 +57,17 @@ function obtenerProductos($app, $database) {
     }
     
     return $productos;
+}
+
+function obtenerHistorialPedidosUsuario($usuario, $app, $database) {
+    $pedidos = array();
+    $tabla_pedidos = $database->pedidos()->where('usuario', $usuario);
+    
+    foreach ($tabla_pedidos as $pedido) {
+        array_push($pedidos, new Pedido($pedido, $app, $database));
+    }
+    
+    return $pedidos;
 }
 
 function realizarPedido($productos, $app, $database) {
