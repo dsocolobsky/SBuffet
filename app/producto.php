@@ -14,6 +14,10 @@ class Producto {
         $this->disponible = $producto['disponible'];
     }
     
+    function getId() {
+        return $this->id;
+    }
+    
     function getNombre() {
         return $this->nombre;
     }
