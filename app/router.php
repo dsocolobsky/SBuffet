@@ -38,13 +38,14 @@ $app->get('/productos', function ($request, $response) use($app, $database) {
     ));
 });
 
-$app->post('/compra', function ($request, $response) use($app, $database) {
+$app->post('/compra', function ($request, $response) use($app, $database) {    
     $productos = $request->getParsedBody()['productos'];
     realizarPedido($productos, $app, $database);
 });
 
 $app->get('/usuarios', function ($request, $response) use($app, $database) {
     $usuarios = obtenerUsuarios($app, $database);
+    
     return $this->view->render($response, 'usuarios.html', array (
         'usuarios' => $usuarios
     ));

@@ -61,7 +61,7 @@ function obtenerProductos($app, $database) {
 
 function obtenerHistorialPedidosUsuario($usuario, $app, $database) {
     $pedidos = array();
-    $tabla_pedidos = $database->pedidos()->where('usuario', $usuario);
+    $tabla_pedidos = $database->pedidos()->where('usuario', $usuario)->order("hora_compra DESC");
     
     foreach ($tabla_pedidos as $pedido) {
         array_push($pedidos, new Pedido($pedido, $app, $database));
@@ -92,7 +92,8 @@ function realizarPedido($productos, $app, $database) {
         $pedido = $database->pedidos()->insert(array (
                 "usuario" => 1,
                 "producto" => $producto,
-                "hora_compra" => new NotORM_Literal("NOW()")
+                "hora_compra" => new NotORM_Literal("NOW()"),
+                "activo" => true
             ));
     }
 }

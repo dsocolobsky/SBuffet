@@ -21,7 +21,7 @@
                         <td>{{ usuario.id|e }}</td>
                         <td>{{ usuario.nombre|e}} {{usuario.apellido|e}}</td>
                         <td>${{ usuario.saldo|e }}</td>
-                        <td>{{ usuario.ultimaCompra|e }}</td>
+                        <td>{{ usuario.ultimaCompra|date("m/d/Y") }}</td>
                         <td><button type="button" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-usd" aria-hidden="true"></span></button></td>
                         {% if usuario.activo == true %}
                         <td><button type="button" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-check" aria-hidden="true"></span></button></td>

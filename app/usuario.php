@@ -7,6 +7,8 @@ class Usuario {
     private $nombre;
     private $apellido;
     private $saldo;
+    private $ultimaCompra;
+    private $activo;
     
     function __construct($usuario, $app, $database) {
         $this->id       = $usuario['id'];
@@ -14,6 +16,23 @@ class Usuario {
         $this->nombre   = $usuario['nombre'];
         $this->apellido = $usuario['apellido'];
         $this->saldo    = $usuario['saldo'];
+        
+        $this->update($app, $database);
+    }
+    
+    function update($app, $database) {
+        $usuario = $database->usuarios[$this->id];
+        $compras = $database->pedidos()->where('usuario', $this->id)->order("hora_compra DESC");
+        $this->ultimaCompra = $compras[1]['hora_compra'];
+        
+        foreach ($compras as $compra) {
+            if($compra['activo'] == true) {
+                $this->activo = true;
+                return;
+            }
+        }
+        
+        $this->activo = false;
     }
     
     function getId() {
@@ -37,11 +56,11 @@ class Usuario {
     }
     
     function getUltimaCompra() {
-        return "hoy";
+        return $this->ultimaCompra;
     }
     
-    function activo() {
-        return true;
+    function getActivo() {
+        return $this->activo;
     }
     
 }
