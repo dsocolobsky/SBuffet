@@ -1,3 +1,5 @@
+var productos = [];
+
 var p_precio = $("#total").find("p");
 var total = precioReal(p_precio.html());
 
@@ -12,16 +14,16 @@ $("#tabla > table > tbody > tr").each(function (i, row) {
             "<tr>",
             "<td>", nombre, "</td>",
             "<td>", precio, "</td>",
-            '<td><button type="button" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button></td>',
+            '<td><button type="button"' + ' name="rproducto' + id + '"',
+                'class="btn btn-info btn-sm"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button></td>',
             "</tr>"
         ].join(" ");
-
+        
         $('#tabla2 > table > tbody:last-child').append(
             elem
         );
 
         cambiarTotal(true, precioReal(precio));
-        console.log("called1");
     });
 });
 
@@ -40,6 +42,23 @@ $('body').on('click', function () {
             }));
         }
     });
+});
+
+$('#boton-comprar > button').unbind('click').bind('click', function() {
+   if (total > 0) {
+    
+        $("#tabla2 > table > tbody > tr").each(function (i, row) {
+            if (i != 0) {
+                var button = $(this).find("td").find("button");
+                var id = button.attr("name");
+                productos.push(id);
+            }
+        });
+        
+        $.post("/compra", function(data) {
+           window.location.replace("/compra");
+        });
+   } 
 });
 
 function cambiarTotal(mas, valor) {

@@ -64,6 +64,15 @@ $app->get('/productos', function ($request, $response) use($app, $database) {
     ));
 });
 
+$app->get('/compra', function ($request, $response) use($app) {
+    
+});
+
+$app->post('/compra', function ($request, $response) use($app) {
+    echo $request->getParsedBody();
+    die();
+});
+
 function obtenerUsuario($id, $app, $database) {
     $usuario = $database->usuarios[$id];
     return new Usuario($usuario, $app, $database);
