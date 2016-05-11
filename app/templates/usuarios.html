@@ -1,0 +1,50 @@
+{% extends "base.html" %} {% block content %}
+<div class="container" style="background-color: white;">
+
+    {% include 'header-buffet.html' %}
+
+    <div class="row-fluid">
+        <div class="col-sm-10">
+            <h3>Usuarios</h3>
+            <div id="tabla">
+                <table class="table table-responsive">
+                    <tr>
+                        <td><strong>Codigo</strong></td>
+                        <td><strong>Nombre</strong></td>
+                        <td><strong>Saldo</strong></td>
+                        <td><strong>Ultima Compra</strong></td>
+                        <td><strong>Carga</strong></td>
+                        <td><strong>Pedido</strong></td>
+                    </tr>
+                    {% for usuario in usuarios %}
+                    <tr>
+                        <td>{{ usuario.id|e }}</td>
+                        <td>{{ usuario.nombre|e}} {{usuario.apellido|e}}</td>
+                        <td>${{ usuario.saldo|e }}</td>
+                        <td>{{ usuario.ultimaCompra|e }}</td>
+                        <td><button type="button" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-usd" aria-hidden="true"></span></button></td>
+                        {% if usuario.activo == true %}
+                        <td><button type="button" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-check" aria-hidden="true"></span></button></td>
+                        {% else %}
+                        <td><button type="button" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-unchecked" aria-hidden="true"></span></button></td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+
+        <div class="col-sm-2">
+            <h3>Agregar Usuario</h3>
+            <div id="tabla">
+                <table class="table table-responsive">
+                    <button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+                </table>
+            </div>
+        </div>
+
+        {% include 'footer.html' %}
+
+    </div>
+    </body>
+    {% endblock %}

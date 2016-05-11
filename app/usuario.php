@@ -36,6 +36,14 @@ class Usuario {
         return $this->saldo;
     }
     
+    function getUltimaCompra() {
+        return "hoy";
+    }
+    
+    function activo() {
+        return true;
+    }
+    
 }
 
 ?>

@@ -43,4 +43,11 @@ $app->post('/compra', function ($request, $response) use($app, $database) {
     realizarPedido($productos, $app, $database);
 });
 
+$app->get('/usuarios', function ($request, $response) use($app, $database) {
+    $usuarios = obtenerUsuarios($app, $database);
+    return $this->view->render($response, 'usuarios.html', array (
+        'usuarios' => $usuarios
+    ));
+});
+
 ?>
