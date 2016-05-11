@@ -46,6 +46,8 @@ $('body').on('click', function () {
 
 $('#boton-comprar > button').unbind('click').bind('click', function() {
    if (total > 0) {
+       
+       console.log("comprando");
     
         $("#tabla2 > table > tbody > tr").each(function (i, row) {
             if (i != 0) {
@@ -55,9 +57,13 @@ $('#boton-comprar > button').unbind('click').bind('click', function() {
             }
         });
         
-        $.post("/compra", function(data) {
-           window.location.replace("/compra");
-        });
+        var jproductos = JSON.stringify(productos);
+        
+        $.post("/compra", {productos: jproductos})
+            .done(function (data) {
+                window.location.replace("/");
+            });
+        
    } 
 });
 
