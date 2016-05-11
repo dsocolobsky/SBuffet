@@ -52,14 +52,15 @@ $('#boton-comprar > button').unbind('click').bind('click', function() {
         $("#tabla2 > table > tbody > tr").each(function (i, row) {
             if (i != 0) {
                 var button = $(this).find("td").find("button");
-                var id = button.attr("name");
+                var id = button.attr("name").replace("rproducto", "");
+                
                 productos.push(id);
             }
         });
         
         var jproductos = JSON.stringify(productos);
         
-        $.post("/compra", {productos: jproductos})
+        $.post("/compra", {productos: productos})
             .done(function (data) {
                 window.location.replace("/");
             });

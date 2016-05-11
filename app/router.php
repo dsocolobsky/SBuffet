@@ -35,12 +35,9 @@ $app->get('/productos', function ($request, $response) use($app, $database) {
     ));
 });
 
-$app->get('/compra', function ($request, $response) use($app) {
-    return "comprado";
-});
-
-$app->post('/compra', function ($request, $response) use($app) {
-    return "hai";
+$app->post('/compra', function ($request, $response) use($app, $database) {
+    $productos = $request->getParsedBody()['productos'];
+    realizarPedido($productos, $app, $database);
 });
 
 ?>

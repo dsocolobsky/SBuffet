@@ -29,6 +29,8 @@ $pdo = new PDO($database_data, "root", "root");
 $structure = new NotORM_Structure_Discovery($pdo, $cache = null, $foreign = '%s');
 $database = new NotORM($pdo, $structure);
 
+session_start();
+
 function obtenerUsuario($id, $app, $database) {
     $usuario = $database->usuarios[$id];
     return new Usuario($usuario, $app, $database);
@@ -54,6 +56,16 @@ function obtenerProductos($app, $database) {
     }
     
     return $productos;
+}
+
+function realizarPedido($productos, $app, $database) {
+    foreach ($productos as $producto) {
+        $pedido = $database->pedidos()->insert(array (
+            "usuario" => 1,
+            "producto" => $producto,
+            "hora_compra" => new NotORM_Literal("NOW()")
+        ));
+    }
 }
 
 require '../app/router.php';

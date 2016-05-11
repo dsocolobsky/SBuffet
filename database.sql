@@ -1,6 +1,8 @@
 CREATE DATABASE IF NOT EXISTS sbuffet;
 USE sbuffet;
 
+SET FOREIGN_KEY_CHECKS=0;
+
 DROP TABLE IF EXISTS usuarios;
 CREATE TABLE IF NOT EXISTS usuarios (
     id INT NOT NULL PRIMARY KEY,
@@ -25,6 +27,8 @@ CREATE TABLE IF NOT EXISTS pedidos (
     producto INT NOT NULL,
     hora_compra TIMESTAMP
 );
+
+SET FOREIGN_KEY_CHECKS=1;
 
 ALTER TABLE pedidos ADD CONSTRAINT fk_pedido_usuario FOREIGN KEY (usuario) REFERENCES usuarios(id);
 ALTER TABLE pedidos ADD CONSTRAINT fk_pedido_producto FOREIGN KEY (producto) REFERENCES productos(id);
