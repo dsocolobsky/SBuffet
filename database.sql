@@ -31,6 +31,12 @@ CREATE TABLE IF NOT EXISTS pedidos (
     guardado BOOLEAN
 );
 
+DROP TABLE IF EXISTS codigos;
+CREATE TABLE IF NOT EXISTS codigos (
+    codigo VARCHAR(4) NOT NULL PRIMARY KEY,
+    emision TIMESTAMP  
+);
+
 SET FOREIGN_KEY_CHECKS=1;
 
 ALTER TABLE pedidos ADD CONSTRAINT fk_pedido_usuario FOREIGN KEY (usuario) REFERENCES usuarios(id);
@@ -42,3 +48,5 @@ INSERT IGNORE INTO productos (nombre, precio, disponible) VALUES ("hamburguesa",
 INSERT IGNORE INTO productos (nombre, precio, disponible) VALUES ("milanesa", 30, true);
 INSERT IGNORE INTO productos (nombre, precio, disponible) VALUES ("pizza", 15.25, true);
 INSERT IGNORE INTO productos (nombre, precio, disponible) VALUES ("pollo", 40, false);
+
+INSERT IGNORE INTO codigos (codigo, emision) VALUES ('abc1', CURRENT_TIMESTAMP);

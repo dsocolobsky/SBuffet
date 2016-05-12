@@ -4,7 +4,7 @@
     {% include 'header-buffet.html' %}
 
     <div class="row-fluid">
-        <div class="col-sm-10">
+        <div class="col-sm-7">
             <h3>Usuarios</h3>
             <div id="tabla">
                 <table class="table table-responsive">
@@ -21,7 +21,7 @@
                         <td>{{ usuario.id|e }}</td>
                         <td>{{ usuario.nombre|e}} {{usuario.apellido|e}}</td>
                         <td>${{ usuario.saldo|e }}</td>
-                        <td>{{ usuario.ultimaCompra|date("m/d/Y") }}</td>
+                        <td>{{ usuario.ultimaCompra|date("d/m/Y") }}</td>
                         <td><button type="button" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-usd" aria-hidden="true"></span></button></td>
                         {% if usuario.activo == true %}
                         <td><button type="button" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-check" aria-hidden="true"></span></button></td>
@@ -34,17 +34,35 @@
             </div>
         </div>
 
-        <div class="col-sm-2">
-            <h3>Agregar Usuario</h3>
+        <div class="col-sm-5">
+            <h3>Codigos Emitidos</h3>
             <div id="tabla">
                 <table class="table table-responsive">
-                    <button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+                    <tr>
+                        <td><strong>Codigo</strong></td>
+                        <td><strong>Emitido</strong></td>
+                        <td><strong>Cancelar</strong></td>
+                    </tr>
+                    {% for codigo in codigos %}
+                    <tr>
+                        <td>{{ codigo.codigo|e }}</td>
+                        <td>{{ codigo.emision|e }}</td>
+                        <td><button type="button" name="codigo" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button></td>
+                    </tr>
+                    {% endfor %}
                 </table>
             </div>
+            <h4>Generar Codigo</h4>
+            <table class="table table-responsive">
+                <div id="boton-codigo">
+                    <button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+                </div>
+            </table>
         </div>
 
         {% include 'footer.html' %}
 
     </div>
+    <script src="/static/usuarios.js"></script>
     </body>
     {% endblock %}

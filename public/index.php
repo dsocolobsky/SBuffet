@@ -6,6 +6,7 @@ require '../vendor/autoload.php';
 require '../app/producto.php';
 require '../app/usuario.php';
 require '../app/pedido.php';
+require '../app/codigo.php';
 
 $config['displayErrorDetails'] = true;
 $config['base_url'] = "app/";
@@ -57,6 +58,17 @@ function obtenerProductos($app, $database) {
     }
     
     return $productos;
+}
+
+function obtenerCodigos($app, $database) {
+    $codigos = array();
+    $tabla_codigos = $database->codigos()->order('emision DESC');
+    
+    foreach ($tabla_codigos as $codigo) {
+        array_push($codigos, new Codigo($codigo, $app, $database));
+    }
+    
+    return $codigos;
 }
 
 function obtenerPedidosActivos($app, $database) {
@@ -147,6 +159,23 @@ function comprobarLogin($usuario, $password, $app, $database) {
     }
     
     return false;
+}
+
+function registrarse($data, $app, $database) {
+    //$codigo = 
+}
+
+function generarCodigo($app, $database) {
+    do {
+        $codigo = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyz"), 0, 4);
+    } while ($database->codigos[$codigo]);
+    
+    $entrada = $database->codigos()->insert(array (
+        "codigo" => $codigo,
+        "emision" => new NotORM_Literal("NOW()"),
+    ));
+    
+    return $codigo;
 }
 
 require '../app/router.php';

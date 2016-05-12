@@ -26,6 +26,11 @@ $app->get('/registro', function ($request, $response) use($app) {
     return $this->view->render($response, 'registro.html');
 });
 
+$app->post('/registro', function ($request, $response) use($app, $database) {
+    $data = $request->getParsedBody();
+    $res = registrarse($data, $app, $database);
+});
+
 $app->get('/usuario', function ($request, $response) use($app, $database) {
     $usuario = obtenerUsuario('1', $app, $database);
     $historial = obtenerHistorialPedidosUsuario('1', $app, $database);
@@ -63,9 +68,11 @@ $app->get('/pedidos', function ($request, $response) use($app, $database) {
 
 $app->get('/usuarios', function ($request, $response) use($app, $database) {
     $usuarios = obtenerUsuarios($app, $database);
+    $codigos = obtenerCodigos($app, $database);
     
     return $this->view->render($response, 'usuarios.html', array (
-        'usuarios' => $usuarios
+        'usuarios' => $usuarios,
+        'codigos' => $codigos
     ));
 });
 
@@ -77,6 +84,10 @@ $app->post('/listo', function ($request, $response) use($app, $database) {
 $app->post('/borrarpedido', function ($request, $response) use($app, $database) {    
     $pedido = $request->getParsedBody()['id'];
     borrarPedido($pedido, $app, $database);
+});
+
+$app->post('/codigo', function ($request, $response) use($app, $database) {    
+    return generarCodigo($app, $database);
 });
 
 ?>
