@@ -69,13 +69,18 @@ $('#boton-comprar > button').unbind('click').bind('click', function() {
 });
 
 function cambiarTotal(mas, valor) {
+    var saldo = precioReal($('#saldo').find("p").html());
+    
     if (mas) {
         total = total + valor;
+        saldo = saldo - valor;
     } else {
         total = total - valor;
+        saldo = saldo + valor;
     }
 
     p_precio.html("$" + total);
+    $('#saldo').find("p").html("$" + saldo);
 }
 
 function precioReal(precio) {
