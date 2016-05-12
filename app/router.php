@@ -66,4 +66,9 @@ $app->post('/listo', function ($request, $response) use($app, $database) {
     pedidoListo($pedido, $app, $database);
 });
 
+$app->post('/borrarpedido', function ($request, $response) use($app, $database) {    
+    $pedido = $request->getParsedBody()['id'];
+    borrarPedido($pedido, $app, $database);
+});
+
 ?>

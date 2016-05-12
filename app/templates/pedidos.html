@@ -30,18 +30,23 @@
 
         <div class="col-sm-6">
             <h3>Entregados</h3>
-            <div id="tabla">
+            
+            <div id="tabla_entregados">
                 <table class="table table-responsive">
                     <tr>
                         <td><strong>Codigo</strong></td>
                         <td><strong>Producto</strong></td>
                         <td><strong>Precio</strong></td>
+                        <td><strong>Fecha</strong></td>
+                        <td><strong>Borrar Entrega</strong></td>
                     </tr>
                     {% for pedido in entregados %}
                     <tr>
                         <td>{{ pedido.usuario|e }}</td>
                         <td>{{ pedido.nombreProducto|e }}</td>
                         <td>{{ pedido.precio|e }}</td>
+                        <td>{{ pedido.hora_compra|e }}</td>
+                        <td><button type="button" name={{ 'pedido' ~ pedido.id|e}} class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></td>
                     </tr>
                     {% endfor %}
                 </table>

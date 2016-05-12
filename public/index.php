@@ -128,6 +128,12 @@ function pedidoListo($pedido, $app, $database) {
     ));
 }
 
+function borrarPedido($pedido, $app, $database) {
+    $affected = $database->pedidos[$pedido]->update(array (
+        "guardado" => false,
+    ));
+}
+
 require '../app/router.php';
 
 $app->run();
