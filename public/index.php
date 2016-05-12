@@ -134,6 +134,21 @@ function borrarPedido($pedido, $app, $database) {
     ));
 }
 
+function comprobarLogin($usuario, $password, $app, $database) {
+    $usuario_db = $database->usuarios()->where('username', $usuario);
+    if (!$usuario_db) {
+        return false;
+    }
+    
+    foreach($usuario_db as $userdb) {
+        if ($userdb['password'] == $password) {
+            return true;
+        }
+    }
+    
+    return false;
+}
+
 require '../app/router.php';
 
 $app->run();

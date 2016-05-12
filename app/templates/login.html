@@ -5,6 +5,7 @@
     <div class="row vertical-center">
         <div class="col-md-4 col-md-offset-4">
             <img src="/static/logo.png" class="img-responsive logo">
+            <br>
             <form class="form-signin" method="post">
                 <label for="usuario" class="sr-only">DNI</label>
                 <input type="text" name="usuario" class="form-control" placeholder="Codigo / Nombre de Usuario" required>
@@ -17,8 +18,11 @@
                 <br>
                 <br>
 
-                <a href="/registro"><button class="btn btn-lg btn-info btn-block" type="submit">Entrar</button></a>
+                <a href="/login"><button class="btn btn-lg btn-info btn-block" type="submit">Entrar</button></a>
             </form>
+            <br>
+            
+            <a href="/registro"><button class="btn btn-lg btn-info btn-block" type="submit">Registrarse</button></a>
         </div>
 </div>
 {% endblock %}

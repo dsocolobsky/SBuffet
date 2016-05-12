@@ -14,8 +14,16 @@ $app->get('/login', function ($request, $response) use($app) {
     return $this->view->render($response, 'login.html');
 });
 
+$app->post('/login', function ($request, $response) use($app, $database) {
+    $usuario  = $request->getParsedBody()['usuario'];
+    $password = $request->getParsedBody()['password'];
+    
+    $res = comprobarLogin($usuario, $password, $app, $database);
+    var_dump($res);
+});
+
 $app->get('/registro', function ($request, $response) use($app) {
-    return $this->view->render($response, 'login.html');
+    return $this->view->render($response, 'registro.html');
 });
 
 $app->get('/usuario', function ($request, $response) use($app, $database) {
