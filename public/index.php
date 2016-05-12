@@ -70,6 +70,17 @@ function obtenerPedidosActivos($app, $database) {
     return $pedidos;
 }
 
+function obtenerPedidosEntregados($app, $database) {
+    $pedidos = array();
+    $tabla_pedidos = $database->pedidos()->where('guardado', true)->order('hora_compra DESC');
+
+    foreach ($tabla_pedidos as $pedido) {
+        array_push($pedidos, new Pedido($pedido, $app, $database));
+    }
+    
+    return $pedidos;
+}
+
 function obtenerHistorialPedidosUsuario($usuario, $app, $database) {
     $pedidos = array();
     $tabla_pedidos = $database->pedidos()->where('usuario', $usuario)->order("hora_compra DESC");
@@ -104,9 +115,17 @@ function realizarPedido($productos, $app, $database) {
                 "usuario" => 1,
                 "producto" => $producto,
                 "hora_compra" => new NotORM_Literal("NOW()"),
-                "activo" => true
+                "activo" => true,
+                "guardado" => false
             ));
     }
+}
+
+function pedidoListo($pedido, $app, $database) {
+    $affected = $database->pedidos[$pedido]->update(array (
+        "activo" => false,
+        "guardado" => true,
+    ));
 }
 
 require '../app/router.php';

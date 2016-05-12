@@ -45,9 +45,11 @@ $app->post('/compra', function ($request, $response) use($app, $database) {
 
 $app->get('/pedidos', function ($request, $response) use($app, $database) {
     $pendientes = obtenerPedidosActivos($app, $database);
+    $entregados = obtenerPedidosEntregados($app, $database);
     
     return $this->view->render($response, 'pedidos.html', array (
-        'pendientes' => $pendientes
+        'pendientes' => $pendientes,
+        'entregados' => $entregados
     ));
 });
 
@@ -57,6 +59,11 @@ $app->get('/usuarios', function ($request, $response) use($app, $database) {
     return $this->view->render($response, 'usuarios.html', array (
         'usuarios' => $usuarios
     ));
+});
+
+$app->post('/listo', function ($request, $response) use($app, $database) {    
+    $pedido = $request->getParsedBody()['id'];
+    pedidoListo($pedido, $app, $database);
 });
 
 ?>

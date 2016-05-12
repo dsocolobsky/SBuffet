@@ -26,7 +26,8 @@ CREATE TABLE IF NOT EXISTS pedidos (
     usuario INT NOT NULL,
     producto INT NOT NULL,
     hora_compra TIMESTAMP,
-    activo BOOLEAN
+    activo BOOLEAN,
+    guardado BOOLEAN
 );
 
 SET FOREIGN_KEY_CHECKS=1;
@@ -40,7 +41,3 @@ INSERT IGNORE INTO productos (nombre, precio, disponible) VALUES ("hamburguesa",
 INSERT IGNORE INTO productos (nombre, precio, disponible) VALUES ("milanesa", 30, true);
 INSERT IGNORE INTO productos (nombre, precio, disponible) VALUES ("pizza", 15.25, true);
 INSERT IGNORE INTO productos (nombre, precio, disponible) VALUES ("pollo", 40, false);
-
-INSERT IGNORE INTO pedidos (usuario, producto, hora_compra, activo) VALUES (
-    1, 1, CURRENT_TIMESTAMP, false
-);
