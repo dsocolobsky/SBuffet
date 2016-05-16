@@ -15,10 +15,10 @@ $("#tabla > table > tbody > tr").each(function (i, row) {
             "<td>", nombre, "</td>",
             "<td>", precio, "</td>",
             '<td><button type="button"' + ' name="rproducto' + id + '"',
-                'class="btn btn-info btn-sm"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button></td>',
+            'class="btn btn-info btn-sm"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button></td>',
             "</tr>"
         ].join(" ");
-        
+
         $('#tabla2 > table > tbody:last-child').append(
             elem
         );
@@ -44,33 +44,40 @@ $('body').on('click', function () {
     });
 });
 
-$('#boton-comprar > button').unbind('click').bind('click', function() {
-   if (total > 0) {
-       
-       console.log("comprando");
-    
+$('#boton-comprar > button').unbind('click').bind('click', function () {
+    if (total > 0) {
+
+        console.log("comprando");
+
         $("#tabla2 > table > tbody > tr").each(function (i, row) {
             if (i != 0) {
                 var button = $(this).find("td").find("button");
                 var id = button.attr("name").replace("rproducto", "");
-                
+
                 productos.push(id);
             }
         });
-        
+
         var jproductos = JSON.stringify(productos);
-        
-        $.post("/compra", {productos: productos})
+
+        $.post("/compra", { productos: productos })
             .done(function (data) {
-                window.location.replace("/");
+                BootstrapDialog.show({
+                    title: 'Informacion',
+                    message: 'Compra realizada correctamente',
+                    type: BootstrapDialog.TYPE_WARNING,
+                    onhidden: function (dialogRef) {
+                        window.location.replace("/");
+                    }
+                });
             });
-        
-   } 
+
+    }
 });
 
 function cambiarTotal(mas, valor) {
     var saldo = precioReal($('#saldo').find("p").html());
-    
+
     if (mas) {
         total = total + valor;
         saldo = saldo - valor;
