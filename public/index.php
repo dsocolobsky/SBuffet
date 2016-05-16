@@ -176,18 +176,18 @@ function registrarse($datos, $app, $database) {
     // TODO: ARREGLAR NOMBRES Y APELLIDOS
     // TODO: HASHEAR CONTRASEÑAS
     $entrada = $database->usuarios()->insert(array (
-        "username" => $datos['usuario'],
-        "password" => $datos['password'],
-        "nombre" => $nombre[0],
-        "apellido" => $nombre[1],
-        "saldo" => 0.00
+        'username' => $datos['usuario'],
+        'password' => $datos['password'],
+        'nombre' => $nombre[0],
+        'apellido' => $nombre[1],
+        'saldo' => 0.00
     ));
     
     if ($entrada) {
         $status = borrarCodigo($datos['codigo'], $app, $database);
     }
         
-    return var_dump($entrada);
+    return "usuario creado";
 }
 
 function generarCodigo($app, $database) {
