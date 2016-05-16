@@ -19,7 +19,6 @@ $app->post('/login', function ($request, $response) use($app, $database) {
     $password = $request->getParsedBody()['password'];
     
     $res = comprobarLogin($usuario, $password, $app, $database);
-    var_dump($res);
 });
 
 $app->get('/registro', function ($request, $response) use($app) {
@@ -27,8 +26,8 @@ $app->get('/registro', function ($request, $response) use($app) {
 });
 
 $app->post('/registro', function ($request, $response) use($app, $database) {
-    $data = $request->getParsedBody();
-    $res = registrarse($data, $app, $database);
+    $datos = $request->getParsedBody()['datos'];
+    return registrarse($datos, $app, $database);
 });
 
 $app->get('/usuario', function ($request, $response) use($app, $database) {

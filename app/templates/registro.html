@@ -6,30 +6,33 @@
             <img src="/static/logo.png" class="img-responsive logo">
             <form class="form-signin" method="post">
                 <div>
-                    <input type="text" name="codigo" class="form-control" placeholder="Codigo" required>
+                    <input type="text" id="codigo" name="codigo" class="form-control" placeholder="Codigo" required>
                     
                     <br>
                     
-                    <input type="text" name="usuario" class="form-control" placeholder="Nombre de Usuario" required>
+                    <input type="text" id="usuario" name="usuario" class="form-control" placeholder="Nombre de Usuario" required>
 
                     <br>
 
-                    <input type="text" name="nombre" class="form-control" placeholder="Nombre y Apellido" required>
+                    <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre y Apellido" required>
 
                     <br>
 
-                    <input type="password" name="password" class="form-control" placeholder="Nueva Contraseña" required>
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Nueva Contraseña" required>
 
                     <br>
 
-                    <input type="password" name="password2" class="form-control" placeholder="Confirmar Contraseña" required>
+                    <input type="password" id="password2" name="password2" class="form-control" placeholder="Confirmar Contraseña" required>
 
                     <br>
                     <br>
 
-                    <a href="/registro"><button class="btn btn-lg btn-info btn-block" type="submit">Registrarse</button></a>
+                    <button id="boton" class="btn btn-lg btn-info btn-block" type="button">Registrarse</button>
             </form>
             </div>
         </div>
 </div>
+
+<script src="/static/registro.js"></script>
+
 {% endblock %}
