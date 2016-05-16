@@ -178,6 +178,11 @@ function generarCodigo($app, $database) {
     return $codigo;
 }
 
+function borrarCodigo($codigo, $app, $database) {
+    $status = $database->codigos[$codigo]->delete();
+    return $status;
+}
+
 require '../app/router.php';
 
 $app->run();
