@@ -183,6 +183,11 @@ function borrarCodigo($codigo, $app, $database) {
     return $status;
 }
 
+function obtenerSaldo($id, $app, $database) {
+    $usuario = $database->usuarios[$id];
+    return $usuario['saldo'];
+}
+
 require '../app/router.php';
 
 $app->run();

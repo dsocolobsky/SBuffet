@@ -95,4 +95,18 @@ $app->post('/borrarcodigo', function ($request, $response) use($app, $database) 
     return borrarCodigo($codigo, $app, $database);
 });
 
+$app->post('/obtenersaldo', function ($request, $response) use($app, $database) {
+    $id = $request->getParsedBody()['id'];
+    $usuario = obtenerUsuario($id, $app, $database);
+    
+    return $this->view->render($response, 'cargarsaldo.html', array(
+        'usuario' => $usuario,
+    ));
+});
+
+$app->post('/cargarsaldo', function ($request, $response) use($app, $database) {
+    $saldo = $request->getParsedBody()['saldo']; 
+    return $saldo;
+});
+
 ?>
