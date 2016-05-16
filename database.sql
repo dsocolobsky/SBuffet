@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS usuarios;
 CREATE TABLE IF NOT EXISTS usuarios (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(128),
-    password VARCHAR(128),
+    password VARCHAR(256),
     nombre VARCHAR(64),
     apellido VARCHAR(128),
     saldo DECIMAL(6, 2)

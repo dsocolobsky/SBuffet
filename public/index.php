@@ -174,10 +174,9 @@ function registrarse($datos, $app, $database) {
     $nombre = explode(" ", $datos['nombre']);
     
     // TODO: ARREGLAR NOMBRES Y APELLIDOS
-    // TODO: HASHEAR CONTRASEÑAS
     $entrada = $database->usuarios()->insert(array (
         'username' => $datos['usuario'],
-        'password' => $datos['password'],
+        'password' => password_hash($datos['password'], PASSWORD_DEFAULT),
         'nombre' => $nombre[0],
         'apellido' => $nombre[1],
         'saldo' => 0.00
