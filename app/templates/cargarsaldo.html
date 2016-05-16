@@ -5,16 +5,12 @@
 <form action="/cargarsaldo" method="post">
     <div id="form-saldo">
         <input type="text" class="form-control input-lg" name="saldo" placeholder="0.00">
-    </div>
-
-    <div class="row-fluid">
-        <div class="col-sm-3">
-            <div id="boton-cargar">
-                <button type="button" class="btn btn-lg btn-warning">Aceptar</button>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <a href="/usuarios"><button type="button" style="margin-top: -21px;" class="btn btn-lg btn-info">Cancelar</button></href>
-        </div>
-    </div>
+    
+    <table class="table-responsive pull-right" style="margin-top: -20px;">
+        <tr>
+            <td style="padding-right: 8px;"><button type="button" class="btn btn-lg btn-warning">Aceptar</button></td>
+            <td><a href="/usuarios"><button type="button" class="btn btn-lg btn-info">Cancelar</button></href></td>
+        </tr>
+     </table>
+   </div>
 </form>
