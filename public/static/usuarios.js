@@ -20,7 +20,10 @@ $('#boton-codigo > button').unbind('click').bind('click', function () {
         BootstrapDialog.show({
             title: 'Codigo',
             message: html,
-            type: BootstrapDialog.TYPE_WARNING
+            type: BootstrapDialog.TYPE_WARNING,
+            onhidden: function(dialogRef) {
+                window.location.replace("/usuarios");
+            }
         });
     });
 });
