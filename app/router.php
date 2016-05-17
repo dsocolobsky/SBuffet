@@ -19,6 +19,12 @@ $app->post('/login', function ($request, $response) use($app, $database) {
     $password = $request->getParsedBody()['password'];
     
     $res = comprobarLogin($usuario, $password, $app, $database);
+     
+    if ($res == 1) {
+        $_SESSION['id'] = $usuario;
+    }
+    
+    return $response->write($res);
 });
 
 $app->get('/registro', function ($request, $response) use($app) {

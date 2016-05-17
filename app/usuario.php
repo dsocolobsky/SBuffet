@@ -4,6 +4,7 @@ class Usuario {
     
     private $id;
     private $username;
+    private $password;
     private $nombre;
     private $apellido;
     private $saldo;
@@ -13,6 +14,7 @@ class Usuario {
     function __construct($usuario, $app, $database) {
         $this->id       = $usuario['id'];
         $this->username = $usuario['username'];
+        $this->password = $usuario['password'];
         $this->nombre   = $usuario['nombre'];
         $this->apellido = $usuario['apellido'];
         $this->saldo    = $usuario['saldo'];
@@ -41,6 +43,10 @@ class Usuario {
     
     function getUsername() {
         return $this->username;
+    }
+    
+    function getPassword() {
+        return $this->password;
     }
     
     function getNombre() {

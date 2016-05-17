@@ -30,6 +30,7 @@ $database_data = "mysql:dbname=sbuffet;host=127.0.0.1";
 $pdo = new PDO($database_data, "root", "root");
 $structure = new NotORM_Structure_Discovery($pdo, $cache = null, $foreign = '%s');
 $database = new NotORM($pdo, $structure);
+$database->debug = true;
 
 session_start();
 
@@ -147,18 +148,16 @@ function borrarPedido($pedido, $app, $database) {
 }
 
 function comprobarLogin($usuario, $password, $app, $database) {
-    $usuario_db = $database->usuarios()->where('username', $usuario);
-    if (!$usuario_db) {
-        return false;
+    $id = $database->usuarios("username", $usuario)->fetch();
+    $usuario = obtenerUsuario($id, $app, $database);
+    
+    if (!$id) {
+        return 0;
+    } else if (password_verify($password, $usuario->getPassword())) {
+        return 1;
     }
     
-    foreach($usuario_db as $userdb) {
-        if ($userdb['password'] == $password) {
-            return true;
-        }
-    }
-    
-    return false;
+    return -1;
 }
 
 function registrarse($datos, $app, $database) {
