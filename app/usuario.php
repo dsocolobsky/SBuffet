@@ -24,7 +24,7 @@ class Usuario {
     
     function update($app, $database) {
         $usuario = $database->usuarios[$this->id];
-        $compras = $database->pedidos()->where('usuario', $this->id)->order("hora_compra DESC");
+        $compras = $database->pedidos('usuario', $this->id)->order("hora_compra DESC");
         $this->ultimaCompra = $compras[1]['hora_compra'];
         
         foreach ($compras as $compra) {

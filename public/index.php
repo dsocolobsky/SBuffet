@@ -74,7 +74,7 @@ function obtenerCodigos($app, $database) {
 
 function obtenerPedidosActivos($app, $database) {
     $pedidos = array();
-    $tabla_pedidos = $database->pedidos()->where('activo', true)->order('usuario ASC');
+    $tabla_pedidos = $database->pedidos('activo', true)->order('usuario ASC');
     
     foreach ($tabla_pedidos as $pedido) {
         array_push($pedidos, new Pedido($pedido, $app, $database));
@@ -85,7 +85,7 @@ function obtenerPedidosActivos($app, $database) {
 
 function obtenerPedidosEntregados($app, $database) {
     $pedidos = array();
-    $tabla_pedidos = $database->pedidos()->where('guardado', true)->order('hora_compra DESC');
+    $tabla_pedidos = $database->pedidos('guardado', true)->order('hora_compra DESC');
 
     foreach ($tabla_pedidos as $pedido) {
         array_push($pedidos, new Pedido($pedido, $app, $database));
@@ -96,7 +96,7 @@ function obtenerPedidosEntregados($app, $database) {
 
 function obtenerHistorialPedidosUsuario($usuario, $app, $database) {
     $pedidos = array();
-    $tabla_pedidos = $database->pedidos()->where('usuario', $usuario)->order("hora_compra DESC");
+    $tabla_pedidos = $database->pedidos('usuario', $usuario)->order("hora_compra DESC");
     
     foreach ($tabla_pedidos as $pedido) {
         array_push($pedidos, new Pedido($pedido, $app, $database));
@@ -165,7 +165,7 @@ function registrarse($datos, $app, $database) {
         return "no existe el codigo";
     }
     
-    $usuarios = $database->usuarios()->where('username', $datos['usuario']); 
+    $usuarios = $database->usuarios('username', $datos['usuario']);
     foreach($usuarios as $u) {
         return "el usuario ya existe";
     }
