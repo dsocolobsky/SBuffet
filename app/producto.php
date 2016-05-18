@@ -2,10 +2,10 @@
 
 class Producto {
     
-    private $id;
-    private $nombre;
-    private $precio;
-    private $disponible;
+    public $id;
+    public $nombre;
+    public $precio;
+    public $disponible;
     
     function __construct($producto, $app, $database) {
         $this->id = $producto['id'];
@@ -13,23 +13,7 @@ class Producto {
         $this->precio = $producto['precio'];
         $this->disponible = $producto['disponible'];
     }
-    
-    function getId() {
-        return $this->id;
-    }
-    
-    function getNombre() {
-        return $this->nombre;
-    }
-    
-    function getPrecio() {
-        return $this->precio;
-    }
-    
-    function getDisponible() {
-        return $this->disponible;
-    }
-    
+        
 }
 
 ?>

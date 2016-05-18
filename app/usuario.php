@@ -2,14 +2,14 @@
 
 class Usuario {
     
-    private $id;
-    private $username;
-    private $password;
-    private $nombre;
-    private $apellido;
-    private $saldo;
-    private $ultimaCompra;
-    private $activo;
+    public $id;
+    public $username;
+    public $password;
+    public $nombre;
+    public $apellido;
+    public $saldo;
+    public $ultimaCompra;
+    public $activo;
     
     function __construct($usuario, $app, $database) {
         $this->id       = $usuario['id'];
@@ -35,38 +35,6 @@ class Usuario {
         }
         
         $this->activo = false;
-    }
-    
-    function getId() {
-        return $this->id;
-    }
-    
-    function getUsername() {
-        return $this->username;
-    }
-    
-    function getPassword() {
-        return $this->password;
-    }
-    
-    function getNombre() {
-        return $this->nombre;
-    }
-    
-    function getApellido() {
-        return $this->apellido;
-    }
-    
-    function getSaldo() {
-        return $this->saldo;
-    }
-    
-    function getUltimaCompra() {
-        return $this->ultimaCompra;
-    }
-    
-    function getActivo() {
-        return $this->activo;
     }
     
 }

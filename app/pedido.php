@@ -2,13 +2,13 @@
 
 class Pedido {
     
-    private $id;
-    private $usuario;
-    private $producto;
-    private $hora_compra;
+    public $id;
+    public $usuario;
+    public $producto;
+    public $hora_compra;
     
-    private $nombreProducto;
-    private $precio;
+    public $nombreProducto;
+    public $precio;
     
     function __construct($pedido, $app, $database) {
         $this->id = $pedido['id'];
@@ -21,31 +21,6 @@ class Pedido {
         $this->precio = $producto['precio'];
     }
     
-    function getId() {
-        return $this->id;
-    }
-    
-    function getUsuario() {
-        return $this->usuario;
-    }
-    
-    function getProducto() {
-        return $this->producto;
-    }
-    
-    function getNombreProducto() {
-        return $this->nombreProducto;
-    }
-    
-    function getPrecio() {
-        return $this->precio;
-    }
-    
-    function getHora_compra() {
-        return $this->hora_compra;
-    }
-    
 }
-
 
 ?>
