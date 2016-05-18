@@ -1,7 +1,7 @@
 <?php
 
 $app->get('/', function ($request, $response) use($app, $database) {
-    $usuario = obtenerUsuario(1, $app, $database);
+    $usuario = new Usuario(1, $app, $database);
     $productos = obtenerProductos($app, $database);
     
     return $this->view->render($response, 'menu.html', array(
@@ -37,7 +37,7 @@ $app->post('/registro', function ($request, $response) use($app, $database) {
 });
 
 $app->get('/usuario', function ($request, $response) use($app, $database) {
-    $usuario = obtenerUsuario('1', $app, $database);
+    $usuario = new Usuario('1', $app, $database);
     $historial = obtenerHistorialPedidosUsuario('1', $app, $database);
     
     return $this->view->render($response, 'usuario.html', array (
@@ -47,7 +47,7 @@ $app->get('/usuario', function ($request, $response) use($app, $database) {
 });
 
 $app->get('/productos', function ($request, $response) use($app, $database) {
-    $usuario = obtenerUsuario(1, $app, $database);
+    $usuario = new Usuario(1, $app, $database);
     $productos = obtenerProductos($app, $database);
     
     return $this->view->render($response, 'productos.html', array (
@@ -102,7 +102,7 @@ $app->post('/borrarcodigo', function ($request, $response) use($app, $database) 
 
 $app->post('/obtenersaldo', function ($request, $response) use($app, $database) {
     $id = $request->getParsedBody()['id'];
-    $usuario = obtenerUsuario($id, $app, $database);
+    $usuario = new Usuario($id, $app, $database);
     
     return $this->view->render($response, 'cargarsaldo.html', array(
         'usuario' => $usuario,

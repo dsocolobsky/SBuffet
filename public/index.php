@@ -34,11 +34,6 @@ $database->debug = true;
 
 session_start();
 
-function obtenerUsuario($id, $app, $database) {
-    $usuario = $database->usuarios[$id];
-    return new Usuario($usuario, $app, $database);
-}
-
 function obtenerUsuarios($app, $database) {
     $usuarios = array();
     $tabla_usuarios = $database->usuarios();
@@ -149,7 +144,7 @@ function borrarPedido($pedido, $app, $database) {
 
 function comprobarLogin($usuario, $password, $app, $database) {
     $id = $database->usuarios("username", $usuario)->fetch();
-    $usuario = obtenerUsuario($id, $app, $database);
+    $usuario = new Usuario($id, $app, $database);
     
     if (!$id) {
         return 0;

@@ -11,7 +11,9 @@ class Usuario {
     public $ultimaCompra;
     public $activo;
     
-    function __construct($usuario, $app, $database) {
+    function __construct($id, $app, $database) {
+        $usuario = $database->usuarios[$id];
+        
         $this->id       = $usuario['id'];
         $this->username = $usuario['username'];
         $this->password = $usuario['password'];
