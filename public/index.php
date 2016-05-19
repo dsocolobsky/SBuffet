@@ -176,8 +176,9 @@ function registrarse($datos, $app, $database) {
         'saldo' => 0.00
     ));
     
+    // Si pudimos registrar el usuario, borrar el codigo utilizado
     if ($entrada) {
-        $status = borrarCodigo($datos['codigo'], $app, $database);
+        $status = $database->codigos[$datos['codigo']]->delete();
     }
         
     return "usuario creado";
