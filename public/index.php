@@ -196,11 +196,6 @@ function generarCodigo($app, $database) {
     return $codigo;
 }
 
-function borrarCodigo($codigo, $app, $database) {
-    $status = $database->codigos[$codigo]->delete();
-    return $status;
-}
-
 function obtenerSaldo($id, $app, $database) {
     $usuario = $database->usuarios[$id];
     return $usuario['saldo'];

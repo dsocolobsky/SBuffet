@@ -97,7 +97,7 @@ $app->post('/codigo', function ($request, $response) use($app, $database) {
 
 $app->post('/borrarcodigo', function ($request, $response) use($app, $database) {    
     $codigo = $request->getParsedBody()['codigo'];
-    return borrarCodigo($codigo, $app, $database);
+    return $database->codigos[$codigo]->delete();
 });
 
 $app->post('/obtenersaldo', function ($request, $response) use($app, $database) {
