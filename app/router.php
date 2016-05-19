@@ -105,7 +105,7 @@ $app->post('/obtenersaldo', function ($request, $response) use($app, $database) 
     $usuario = new Usuario($id, $app, $database);
     
     return $this->view->render($response, 'cargarsaldo.html', array(
-        'usuario' => $usuario,
+        'saldo' => $usuario->saldo,
     ));
 });
 
