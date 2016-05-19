@@ -88,7 +88,10 @@ $app->post('/listo', function ($request, $response) use($app, $database) {
 
 $app->post('/borrarpedido', function ($request, $response) use($app, $database) {    
     $pedido = $request->getParsedBody()['id'];
-    borrarPedido($pedido, $app, $database);
+    
+    $database->pedidos[$pedido]->update(array (
+        "guardado" => false,
+    ));
 });
 
 $app->post('/codigo', function ($request, $response) use($app, $database) {    
