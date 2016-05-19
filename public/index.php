@@ -129,13 +129,6 @@ function realizarPedido($productos, $app, $database) {
     }
 }
 
-function pedidoListo($pedido, $app, $database) {
-    $affected = $database->pedidos[$pedido]->update(array (
-        "activo" => false,
-        "guardado" => true,
-    ));
-}
-
 function comprobarLogin($usuario, $password, $app, $database) {
     $id = $database->usuarios("username", $usuario)->fetch();
     $usuario = new Usuario($id, $app, $database);

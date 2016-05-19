@@ -83,12 +83,20 @@ $app->get('/usuarios', function ($request, $response) use($app, $database) {
 
 $app->post('/listo', function ($request, $response) use($app, $database) {    
     $pedido = $request->getParsedBody()['id'];
-    pedidoListo($pedido, $app, $database);
+    
+    // Indica que el pedido esta listo y entregado, pero lo guarda
+    // en la lista de pedidos entregados del Buffet
+    $database->pedidos[$pedido]->update(array (
+        "activo" => false,
+        "guardado" => true,
+    ));
 });
 
 $app->post('/borrarpedido', function ($request, $response) use($app, $database) {    
     $pedido = $request->getParsedBody()['id'];
     
+    // Borra el pedido de la lista de entregados del buffet
+    // (Pero no del historial del usuario)
     $database->pedidos[$pedido]->update(array (
         "guardado" => false,
     ));
