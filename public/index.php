@@ -197,11 +197,6 @@ function generarCodigo($app, $database) {
     return $codigo;
 }
 
-function obtenerSaldo($id, $app, $database) {
-    $usuario = $database->usuarios[$id];
-    return $usuario['saldo'];
-}
-
 require '../app/router.php';
 
 $app->run();
