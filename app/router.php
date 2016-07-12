@@ -1,6 +1,10 @@
 <?php
 
 $app->get('/', function ($request, $response) use($app, $database) {
+    /*if (!isset($_SESSION['id']) || empty($_SESSION['id'])) {
+        return $response->withStatus(302)->withHeader('Location', '/login');
+    }*/
+
     $usuario = new Usuario(1, $app, $database);
     $productos = obtenerProductos($app, $database);
     
@@ -19,6 +23,8 @@ $app->post('/login', function ($request, $response) use($app, $database) {
     $password = $request->getParsedBody()['password'];
     
     $res = comprobarLogin($usuario, $password, $app, $database);
+    echo $res;
+    die();
      
     if ($res == 1) {
         $_SESSION['id'] = $usuario;

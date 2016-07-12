@@ -42,7 +42,7 @@ SET FOREIGN_KEY_CHECKS=1;
 ALTER TABLE pedidos ADD CONSTRAINT fk_pedido_usuario FOREIGN KEY (usuario) REFERENCES usuarios(id);
 ALTER TABLE pedidos ADD CONSTRAINT fk_pedido_producto FOREIGN KEY (producto) REFERENCES productos(id);
 
-INSERT IGNORE INTO usuarios (username, password, nombre, apellido, saldo) VALUES ("dsocolobsky", "password", "Dylan", "Socolobsky", 600);
+INSERT IGNORE INTO usuarios (username, password, nombre, apellido, saldo) VALUES ("admin", "$2y$10$WVTAtbZ.PgR.IF04oD.vmOq/7nmd/o6A7jpqPvx/LsIeiyKlnsJE2", "Admin", "Admin", 600);
 
 INSERT IGNORE INTO productos (nombre, precio, disponible) VALUES ("hamburguesa", 20, true);
 INSERT IGNORE INTO productos (nombre, precio, disponible) VALUES ("milanesa", 30, true);

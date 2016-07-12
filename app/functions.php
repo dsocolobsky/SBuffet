@@ -96,16 +96,15 @@ function realizarPedido($productos, $app, $database) {
 }
 
 function comprobarLogin($usuario, $password, $app, $database) {
-    $id = $database->usuarios("username", $usuario)->fetch();
-    $usuario = new Usuario($id, $app, $database);
-    
-    if (!$id) {
+    $usuario = $database->usuarios('username', $usuario)->fetch();
+
+    if (empty($usuario)) {
         return 0;
-    } else if (password_verify($password, $usuario->getPassword())) {
+    } else if (password_verify($password, $usuario['password'])) {
         return 1;
+    } else {
+        return -1;
     }
-    
-    return -1;
 }
 
 function registrarse($datos, $app, $database) {
