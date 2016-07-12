@@ -35,7 +35,7 @@ $app->post('/registro', function ($request, $response) use($app, $database) {
 })->add($noDebeLoggearse);
 
 $app->get('/menu', function ($request, $response) use($app, $database) {
-    $usuario = new Usuario(1, $app, $database);
+    $usuario = new Usuario($_SESSION['id'], $app, $database);
     $productos = obtenerProductos($app, $database);
     
     return $this->view->render($response, 'menu.html', array(
@@ -49,7 +49,7 @@ $app->get('/usuario', function ($request, $response) use($app, $database) {
         return $response->withStatus(302)->withHeader('Location', '/login');
     }
     
-    $usuario = new Usuario('1', $app, $database);
+    $usuario = new Usuario($_SESSION['id'], $app, $database);
     $historial = obtenerHistorialPedidosUsuario('1', $app, $database);
     
     return $this->view->render($response, 'usuario.html', array (
@@ -59,7 +59,7 @@ $app->get('/usuario', function ($request, $response) use($app, $database) {
 })->add($debeLoggearse);
 
 $app->get('/productos', function ($request, $response) use($app, $database) {
-    $usuario = new Usuario(1, $app, $database);
+    $usuario = new Usuario($_SESSION['id'], $app, $database);
     $productos = obtenerProductos($app, $database);
     
     return $this->view->render($response, 'productos.html', array (
@@ -125,7 +125,8 @@ $app->post('/borrarcodigo', function ($request, $response) use($app, $database) 
 
 $app->post('/obtenersaldo', function ($request, $response) use($app, $database) {
     $id = $request->getParsedBody()['id'];
-    $usuario = new Usuario($id, $app, $database);
+    $username = $database->usuarios[$id]['username'];
+    $usuario = new Usuario($username, $app, $database);
     
     return $this->view->render($response, 'cargarsaldo.html', array(
         'saldo' => $usuario->saldo,

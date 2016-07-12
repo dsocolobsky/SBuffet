@@ -67,7 +67,7 @@ function obtenerHistorialPedidosUsuario($usuario, $app, $database) {
 }
 
 function realizarPedido($productos, $app, $database) {
-    $saldo = $database->usuarios[1]['saldo'];
+    $saldo = $database->usuarios[$_SESSION['id']]['saldo'];
     $precio_total = 0.00;
     
     foreach ($productos as $producto) {
@@ -86,7 +86,7 @@ function realizarPedido($productos, $app, $database) {
     
     foreach ($productos as $producto) {
         $pedido = $database->pedidos()->insert(array (
-                "usuario" => 1,
+                "usuario" => $_SESSION['id'],
                 "producto" => $producto,
                 "hora_compra" => new NotORM_Literal("NOW()"),
                 "activo" => true,

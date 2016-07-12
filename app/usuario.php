@@ -1,7 +1,7 @@
 <?php
 
 class Usuario {
-    
+
     public $id;
     public $username;
     public $password;
@@ -11,9 +11,9 @@ class Usuario {
     public $ultimaCompra;
     public $activo;
     
-    function __construct($id, $app, $database) {
-        $usuario = $database->usuarios[$id];
-        
+    function __construct($username, $app, $database) {
+        $usuario = $database->usuarios->where('username', $username)->fetch();
+
         $this->id       = $usuario['id'];
         $this->username = $usuario['username'];
         $this->password = $usuario['password'];
