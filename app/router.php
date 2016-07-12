@@ -121,8 +121,10 @@ $app->post('/obtenersaldo', function ($request, $response) use($app, $database) 
 });
 
 $app->post('/cargarsaldo', function ($request, $response) use($app, $database) {
-    $saldo = $request->getParsedBody()['saldo']; 
-    return $saldo;
+    $saldo = $request->getParsedBody()['saldo'];
+
+    echo $saldo;
+    die();
 });
 
 ?>
