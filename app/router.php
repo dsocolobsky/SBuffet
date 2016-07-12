@@ -1,14 +1,7 @@
 <?php
 
 $app->get('/', function ($request, $response) use($app, $database) {
-    $usuario = new Usuario(1, $app, $database);
-    $productos = obtenerProductos($app, $database);
-    
-    return $this->view->render($response, 'menu.html', array(
-        'usuario' => $usuario,
-        'productos' => $productos
-    ));
-})->add($debeLoggearse);
+})->add($index);
 
 $app->get('/logout', function ($request, $response) use($app) {
     logOut();
@@ -40,6 +33,16 @@ $app->post('/registro', function ($request, $response) use($app, $database) {
     $datos = $request->getParsedBody()['datos'];
     return registrarse($datos, $app, $database);
 })->add($noDebeLoggearse);
+
+$app->get('/menu', function ($request, $response) use($app, $database) {
+    $usuario = new Usuario(1, $app, $database);
+    $productos = obtenerProductos($app, $database);
+    
+    return $this->view->render($response, 'menu.html', array(
+        'usuario' => $usuario,
+        'productos' => $productos
+    ));
+})->add($debeLoggearse);
 
 $app->get('/usuario', function ($request, $response) use($app, $database) {
     if (!isset($_SESSION['id']) || empty($_SESSION['id'])) {

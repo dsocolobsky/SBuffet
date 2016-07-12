@@ -26,7 +26,7 @@ $("#boton").unbind('click').bind('click', function () {
                     message: data,
                     type: BootstrapDialog.TYPE_WARNING,
                     onhidden: function (dialogRef) {
-                        window.location.replace("/registro");
+                        window.location.replace("/login");
                     }
                 });
             });
