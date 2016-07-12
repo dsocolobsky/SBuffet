@@ -25,7 +25,7 @@ $app->post('/login', function ($request, $response) use($app, $database) {
     
     $res = comprobarLogin($usuario, $password, $app, $database);
      
-    if ($res == 1) {
+    if ($res > 0) {
         $_SESSION['id'] = $usuario;
     }
     

@@ -11,6 +11,8 @@ $('#boton-entrar').unbind('click').bind('click', function () {
                     dialog("La contraseña es incorrecta");
                 } else if (data == 1) {
                     window.location.replace("/");
+                } else if (data == 2) {
+                    window.location.replace("/pedidos");
                 }
             });
     });

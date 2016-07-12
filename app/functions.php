@@ -96,11 +96,14 @@ function realizarPedido($productos, $app, $database) {
 }
 
 function comprobarLogin($usuario, $password, $app, $database) {
-    $usuario = $database->usuarios('username', $usuario)->fetch();
+    $user = $database->usuarios('username', $usuario)->fetch();
 
-    if (empty($usuario)) {
+    if (empty($user)) {
         return 0;
-    } else if (password_verify($password, $usuario['password'])) {
+    } else if (password_verify($password, $user['password'])) {
+        if ($user['username'] == 'admin') {
+            return 2;
+        }
         return 1;
     } else {
         return -1;
