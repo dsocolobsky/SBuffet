@@ -149,4 +149,10 @@ function generarCodigo($app, $database) {
     return $codigo;
 }
 
+function logOut() {
+    if (isset($_SESSION['id']) || !empty($_SESSION['id'])) {
+        unset($_SESSION['id']);
+    }
+}
+
 ?>

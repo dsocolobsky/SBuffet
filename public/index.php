@@ -34,6 +34,7 @@ $database->debug = true;
 
 session_start();
 
+require '../app/middleware.php';
 require '../app/functions.php';
 require '../app/router.php';
 
