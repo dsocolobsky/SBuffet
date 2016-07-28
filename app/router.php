@@ -130,14 +130,18 @@ $app->post('/obtenersaldo', function ($request, $response) use($app, $database) 
     
     return $this->view->render($response, 'cargarsaldo.html', array(
         'saldo' => $usuario->saldo,
+        'usuario' => $usuario
     ));
 })->add($debeLoggearse);
 
 $app->post('/cargarsaldo', function ($request, $response) use($app, $database) {
+    $username = $request->getParsedBody()['usuario'];
     $saldo = $request->getParsedBody()['saldo'];
 
-    echo $saldo;
-    die();
+    $usuario = new Usuario($username, $app, $database);
+
+    cargarSaldo($usuario, $saldo, $app, $database);
+    return $response->withStatus(302)->withHeader('Location', '/usuarios');
 })->add($debeSerAdmin);
 
 ?>

@@ -152,6 +152,18 @@ function generarCodigo($app, $database) {
     return $codigo;
 }
 
+function cargarSaldo($usuario, $saldo, $app, $database) {
+    if ($saldo <= 0) {
+        return "ERROR";
+    }
+
+    $nsaldo = $database->usuarios[$usuario->username]->update(array (
+        "saldo" => $usuario->saldo + $saldo
+    ));
+
+    return $nsaldo;
+}
+
 function logOut() {
     if (isset($_SESSION['id']) || !empty($_SESSION['id'])) {
         unset($_SESSION['id']);

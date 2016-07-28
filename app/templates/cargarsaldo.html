@@ -5,6 +5,9 @@
 <form action="/cargarsaldo" method="post">
     <div id="form-saldo">
         <input type="text" class="form-control input-lg" name="saldo" placeholder="0.00">
+
+        
+        <input type="hidden" value="{{ usuario.username|e }}" name="usuario"/>
     
     <table class="table-responsive pull-right" style="margin-top: -20px;">
         <tr>
