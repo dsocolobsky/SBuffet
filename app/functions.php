@@ -80,7 +80,7 @@ function realizarPedido($productos, $app, $database) {
         return;
     }
     
-    $affected = $database->usuarios[1]->update(array (
+    $affected = $database->usuarios[$_SESSION['id']]->update(array (
         "saldo" => $saldo - $precio_total
     ));
     
@@ -96,12 +96,12 @@ function realizarPedido($productos, $app, $database) {
 }
 
 function comprobarLogin($usuario, $password, $app, $database) {
-    $user = $database->usuarios('username', $usuario)->fetch();
+    $user = new Usuario($usuario, $app, $database);
 
     if (empty($user)) {
         return 0;
-    } else if (password_verify($password, $user['password'])) {
-        if ($user['username'] == 'admin') {
+    } else if (password_verify($password, $user->password)) {
+        if ($user->username == 'admin') {
             return 2;
         }
         return 1;

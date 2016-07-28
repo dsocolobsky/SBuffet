@@ -2,8 +2,8 @@
 
 class Usuario {
 
-    public $id;
     public $username;
+    public $codigo;
     public $password;
     public $nombre;
     public $apellido;
@@ -12,10 +12,10 @@ class Usuario {
     public $activo;
     
     function __construct($username, $app, $database) {
-        $usuario = $database->usuarios->where('username', $username)->fetch();
+        $usuario = $database->usuarios[$username];
 
-        $this->id       = $usuario['id'];
         $this->username = $usuario['username'];
+        $this->codigo   = $usuario['codigo'];
         $this->password = $usuario['password'];
         $this->nombre   = $usuario['nombre'];
         $this->apellido = $usuario['apellido'];
@@ -25,8 +25,8 @@ class Usuario {
     }
     
     function update($app, $database) {
-        $usuario = $database->usuarios[$this->id];
-        $compras = $database->pedidos('usuario', $this->id)->order("hora_compra DESC");
+        $usuario = $database->usuarios[$this->username];
+        $compras = $database->pedidos('usuario', $this->username)->order("hora_compra DESC");
         $this->ultimaCompra = $compras[1]['hora_compra'];
         
         foreach ($compras as $compra) {

@@ -5,12 +5,13 @@ SET FOREIGN_KEY_CHECKS=0;
 
 DROP TABLE IF EXISTS usuarios;
 CREATE TABLE IF NOT EXISTS usuarios (
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    username VARCHAR(128),
+    username VARCHAR(128) NOT NULL PRIMARY KEY,
+    codigo INT AUTO_INCREMENT,
     password VARCHAR(256),
     nombre VARCHAR(64),
     apellido VARCHAR(128),
-    saldo DECIMAL(6, 2)
+    saldo DECIMAL(6, 2),
+    UNIQUE(codigo)
 );
 
 DROP TABLE IF EXISTS productos;
@@ -24,7 +25,7 @@ CREATE TABLE IF NOT EXISTS productos (
 DROP TABLE IF EXISTS pedidos;
 CREATE TABLE IF NOT EXISTS pedidos (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    usuario INT NOT NULL,
+    usuario VARCHAR(128) NOT NULL,
     producto INT NOT NULL,
     hora_compra TIMESTAMP,
     activo BOOLEAN,
@@ -39,7 +40,7 @@ CREATE TABLE IF NOT EXISTS codigos (
 
 SET FOREIGN_KEY_CHECKS=1;
 
-ALTER TABLE pedidos ADD CONSTRAINT fk_pedido_usuario FOREIGN KEY (usuario) REFERENCES usuarios(id);
+ALTER TABLE pedidos ADD CONSTRAINT fk_pedido_usuario FOREIGN KEY (usuario) REFERENCES usuarios(username);
 ALTER TABLE pedidos ADD CONSTRAINT fk_pedido_producto FOREIGN KEY (producto) REFERENCES productos(id);
 
 INSERT IGNORE INTO usuarios (username, password, nombre, apellido, saldo) VALUES ("admin", "$2y$10$WVTAtbZ.PgR.IF04oD.vmOq/7nmd/o6A7jpqPvx/LsIeiyKlnsJE2", "Ad", "Min", 600);

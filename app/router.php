@@ -50,7 +50,7 @@ $app->get('/usuario', function ($request, $response) use($app, $database) {
     }
     
     $usuario = new Usuario($_SESSION['id'], $app, $database);
-    $historial = obtenerHistorialPedidosUsuario('1', $app, $database);
+    $historial = obtenerHistorialPedidosUsuario($_SESSION['id'], $app, $database);
     
     return $this->view->render($response, 'usuario.html', array (
         'usuario' => $usuario,
