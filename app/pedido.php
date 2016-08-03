@@ -9,6 +9,8 @@ class Pedido {
     
     public $nombreProducto;
     public $precio;
+
+    public $codigo_usuario;
     
     function __construct($pedido, $app, $database) {
         $this->id = $pedido['id'];
@@ -19,6 +21,8 @@ class Pedido {
         $producto = $database->productos[$this->producto];
         $this->nombreProducto = $producto['nombre'];
         $this->precio = $producto['precio'];
+
+        $this->codigo_usuario = $database->usuarios[$this->usuario]['codigo'];
     }
     
 }

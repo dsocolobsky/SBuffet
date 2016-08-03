@@ -16,7 +16,7 @@
                     </tr>
                     {% for pedido in pendientes %}
                     <tr>
-                        <td>{{ pedido.usuario|e }}</td>
+                        <td>{{ pedido.codigo_usuario|e }}</td>
                         <td>{{ pedido.nombreProducto|e }}</td>
                         <td>{{ pedido.precio|e }}</td>
                         <td>
@@ -42,7 +42,7 @@
                     </tr>
                     {% for pedido in entregados %}
                     <tr>
-                        <td>{{ pedido.usuario|e }}</td>
+                        <td>{{ pedido.codigo_usuario|e }}</td>
                         <td>{{ pedido.nombreProducto|e }}</td>
                         <td>{{ pedido.precio|e }}</td>
                         <td>{{ pedido.hora_compra|e }}</td>
