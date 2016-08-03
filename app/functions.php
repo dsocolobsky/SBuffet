@@ -153,10 +153,6 @@ function generarCodigo($app, $database) {
 }
 
 function cargarSaldo($usuario, $saldo, $app, $database) {
-    if ($saldo <= 0) {
-        return "ERROR";
-    }
-
     $nsaldo = $database->usuarios[$usuario->username]->update(array (
         "saldo" => $usuario->saldo + $saldo
     ));
