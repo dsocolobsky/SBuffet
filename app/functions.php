@@ -160,6 +160,12 @@ function cargarSaldo($usuario, $saldo, $app, $database) {
     return $nsaldo;
 }
 
+function disponibilidadProducto($id, $disponible, $app, $database) {
+    $nproducto = $database->productos[$id]->update(array (
+        "disponible" => $disponible
+    ));
+}
+
 function logOut() {
     if (isset($_SESSION['id']) || !empty($_SESSION['id'])) {
         unset($_SESSION['id']);

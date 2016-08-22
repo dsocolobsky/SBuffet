@@ -144,4 +144,14 @@ $app->post('/cargarsaldo', function ($request, $response) use($app, $database) {
     return $response->withStatus(302)->withHeader('Location', '/usuarios');
 })->add($debeSerAdmin);
 
+$app->post('/productodisponible', function ($request, $response) use($app, $database) {
+    $id = $request->getParsedBody()['id'];
+    disponibilidadProducto($id, true, $app, $database);
+})->add($debeSerAdmin);
+
+$app->post('/productonodisponible', function ($request, $response) use($app, $database) {
+    $id = $request->getParsedBody()['id'];
+    disponibilidadProducto($id, false, $app, $database);
+})->add($debeSerAdmin);
+
 ?>
