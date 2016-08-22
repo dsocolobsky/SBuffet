@@ -13,7 +13,7 @@
                         <td><strong>Producto</strong></td>
                         <td><strong>Precio</strong></td>
                         <td><strong>Disponibilidad</strong></td>
-                        <td><strong>Borrar</strong></td>
+                        <!--<td><strong>Borrar</strong></td>-->
                     </tr>
                     {% for producto in productos %}
                     <tr>
@@ -26,7 +26,7 @@
                             <button type="button" name="{{ 'nodisponible' ~ producto.id|e }}" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-unchecked" aria-hidden="true"></span></button>
                         {% endif %}
                         </td>
-                        <td><button type="button" name="{{ 'borrar' ~ producto.id|e }}" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></td>
+                        <!--<td><button type="button" name="{{ 'borrar' ~ producto.id|e }}" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></td>-->
                     </tr>
                     {% endfor %}
                 </table>
@@ -35,9 +35,11 @@
 
         <div class="col-sm-2">
             <h3>Agregar Producto</h3>
-            <div id="table">
+            <div id="tabla_agregar">
                 <table class="table">
-                    <button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+                    <div id="boton-agregar">
+                    <a href="/agregarproducto"><button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button></a>
+                    </div>
                 </table>
             </div>
         </div>

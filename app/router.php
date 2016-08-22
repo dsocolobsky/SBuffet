@@ -59,7 +59,8 @@ $app->get('/usuario', function ($request, $response) use($app, $database) {
 })->add($debeLoggearse);
 
 $app->get('/productos', function ($request, $response) use($app, $database) {
-    $usuario = new Usuario($_SESSION['id'], $app, $database);
+    $username = $database->usuarios[$_SESSION['id']]['username'];
+    $usuario = new Usuario($username, $app, $database);
     $productos = obtenerProductos($app, $database);
     
     return $this->view->render($response, 'productos.html', array (
@@ -90,6 +91,11 @@ $app->get('/usuarios', function ($request, $response) use($app, $database) {
     return $this->view->render($response, 'usuarios.html', array (
         'usuarios' => $usuarios,
         'codigos' => $codigos
+    ));
+})->add($debeSerAdmin);
+
+$app->get('/agregarproducto', function ($request, $response) use($app, $database) {
+    return $this->view->render($response, 'nuevoproducto.html', array (
     ));
 })->add($debeSerAdmin);
 
