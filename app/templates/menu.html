@@ -60,6 +60,18 @@
 
                 <div id="caja">
                     <div class="well clearfix">
+
+                        <div class="dropdown pull-right" style="margin-top: 18px;">
+                            <button class="btn btn-lg btn-info dropdown-toggle" type="button" id="entrega" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                Entrega
+                                <span class="glyphicon glyphicon-triangle-bottom" style="font-size: 15px;"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="entrega">
+                                <li><a href="#"><h5>Mediodia</h5></a></li>
+                                <li><a href="#"><h5>Noche</h5></a></li>
+                            </ul>
+                        </div>
+
                         <h3>Total a pagar:</h3>
                         <div id="total">
                             <p>$0</p>
@@ -70,11 +82,12 @@
                             <p>${{ usuario.saldo|e }}</p>
                         </div>
 
-
                         <form action="/compra" method="POST" id="form-compra">
                             <div id="boton-comprar">
                                 <input type="hidden" id="boton-compra" name="boton-compra">
-                                <button type="button" class="btn btn-lg btn-warning pull-right">Aceptar</button>
+                                <button type="button" class="btn btn-lg btn-warning pull-right">Aceptar
+                                    <span class="glyphicon glyphicon-ok" style="font-size: 15px;"></span>
+                                </button>
                             </div>
                         </form>
                     </div>
