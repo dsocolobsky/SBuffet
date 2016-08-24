@@ -38,21 +38,18 @@ $("#tabla_productos > table > tbody > tr").each(function (i, row) {
 
 });
 
-$('#boton-agregar > button').unbind('click').bind('click', function () {
-    console.log("CALLED");
-    html_final = $.get("/agregarproducto", {})
-        .done(function (data) {
-            //console.log($("#boton-agregar").html());
-            BootstrapDialog.show({
-                title: 'Agregar Producto',
-                message: 'hey',
-                type: BootstrapDialog.TYPE_WARNING,
-            });
-        });
 
-        BootstrapDialog.show({
-                title: 'Agregar Producto',
-                message: 'hey',
-                type: BootstrapDialog.TYPE_WARNING,
+    $('#boton-agregar > button').unbind('click').bind('click', function () {
+        html_final = $.get("/agregarproducto")
+            .done(function (data) {
+                BootstrapDialog.show({
+                    title: 'Agregar Producto',
+                    message: data,
+                    type: BootstrapDialog.TYPE_WARNING,
+                    onhidden: function (dialogRef) {
+                        window.location.replace("/productos");
+                    }
+                });
             });
-});
+        console.log($.get("/usuarios"), {});
+    });

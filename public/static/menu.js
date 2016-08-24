@@ -62,14 +62,27 @@ $('#boton-comprar > button').unbind('click').bind('click', function () {
 
         $.post("/compra", { productos: productos })
             .done(function (data) {
-                BootstrapDialog.show({
-                    title: 'Informacion',
-                    message: 'Compra realizada correctamente',
-                    type: BootstrapDialog.TYPE_WARNING,
-                    onhidden: function (dialogRef) {
-                        window.location.replace("/");
-                    }
-                });
+                console.log(data);
+                if (data == -1) {
+                    BootstrapDialog.show({
+                        title: 'Informacion',
+                        message: 'No hay saldo suficiente',
+                        type: BootstrapDialog.TYPE_WARNING,
+                        onhidden: function (dialogRef) {
+                            window.location.replace("/");
+                        }
+                    });
+                } else {
+                    BootstrapDialog.show({
+                        title: 'Informacion',
+                        message: 'Compra realizada correctamente',
+                        type: BootstrapDialog.TYPE_WARNING,
+                        onhidden: function (dialogRef) {
+                            window.location.replace("/");
+                        }
+                    });
+                }
+                
             });
 
     }

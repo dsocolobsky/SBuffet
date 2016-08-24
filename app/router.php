@@ -71,7 +71,8 @@ $app->get('/productos', function ($request, $response) use($app, $database) {
 
 $app->post('/compra', function ($request, $response) use($app, $database) {  
     $productos = $request->getParsedBody()['productos'];
-    realizarPedido($productos, $app, $database);
+    $val = realizarPedido($productos, $app, $database);
+    return $response->write($val);
 })->add($debeLoggearse);
 
 $app->get('/pedidos', function ($request, $response) use($app, $database) {
@@ -97,6 +98,15 @@ $app->get('/usuarios', function ($request, $response) use($app, $database) {
 $app->get('/agregarproducto', function ($request, $response) use($app, $database) {
     return $this->view->render($response, 'nuevoproducto.html', array (
     ));
+})->add($debeSerAdmin);
+
+$app->post('/agregarproducto', function ($request, $response) use($app, $database) {
+    $nombre = $request->getParsedBody()['nombre'];
+    $precio = $request->getParsedBody()['precio'];
+    
+    agregarProducto($nombre, $precio, $app, $database);
+
+    return $response->withStatus(302)->withHeader('Location', '/productos');
 })->add($debeSerAdmin);
 
 $app->post('/listo', function ($request, $response) use($app, $database) {
@@ -159,5 +169,14 @@ $app->post('/productonodisponible', function ($request, $response) use($app, $da
     $id = $request->getParsedBody()['id'];
     disponibilidadProducto($id, false, $app, $database);
 })->add($debeSerAdmin);
+
+$app->post('/cambiarpassword', function ($request, $response) use($app, $database) {
+    $passOriginal = $request->getParsedBody()['passOriginal'];
+    $passNueva = $request->getParsedBody()['passNueva'];
+    $passNueva2 = $request->getParsedBody()['passNueva2'];
+
+    $val = cambiarPassword($passOriginal, $passNueva, $passNueva2, $app, $database);
+    return $response->write($val);
+})->add($debeLoggearse);
 
 ?>

@@ -1,27 +1,12 @@
 <h2>Agregar Producto</h2>
 
-<form method="post">
+<form action="/agregarproducto" method="post" style="margin-top: -50px;">
     <div>
         Producto
-        <input type="text" id="codigo" name="codigo" class="form-control" placeholder="pollo" required>
+        <input type="text" id="nombre" name="nombre" class="form-control" placeholder="pollo" required>
+         Precio
+        <input type="text" id="precio" name="precio" class="form-control" placeholder="9,95" required>
 
-        <br> Precio
-        <input type="text" id="usuario" name="usuario" class="form-control" placeholder="9,95" required>
-
-        <br>
-
-        <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre y Apellido" required>
-
-        <br>
-
-        <input type="password" id="password" name="password" class="form-control" placeholder="Nueva Contraseña" required>
-
-        <br>
-
-        <input type="password" id="password2" name="password2" class="form-control" placeholder="Confirmar Contraseña" required>
-
-        <br>
-        <br>
-
-        <button id="boton" class="btn btn-lg btn-info btn-block" type="button">Registrarse</button>
+        <button id="boton" class="btn btn-lg btn-info btn-block" type="submit">Agregar</button>
+        <a href="/productos"><button type="button" class="btn btn-lg btn-info btn-block">Cancelar</button>
 </form>

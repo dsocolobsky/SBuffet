@@ -31,16 +31,14 @@
                 <div class="well clearfix">
                     <h4><strong>Cambiar Contraseña</strong></h4>
                     <br>
-                    <form action="post">
-                        <input type="text" name="usuario" class="form-control" style="width: 60%;" placeholder="Contraseña" required>
+                    <form action="/cambiarpassword" method="post">
+                        <input type="text" id="passOriginal" name="passOriginal" class="form-control" style="width: 60%;" placeholder="Contraseña" required>
                         <br>
-                        <input type="text" name="usuario" class="form-control" style="width: 60%;" placeholder="Nueva Contraseña" required>
+                        <input type="text" id="passNueva" name="passNueva" class="form-control" style="width: 60%;" placeholder="Nueva Contraseña" required>
                         <br>
-                        <input type="text" name="usuario" class="form-control" style="width: 60%;" placeholder="Confimar Contraseña" required>
+                        <input type="text" id="passNueva2" name="passNueva2" class="form-control" style="width: 60%;" placeholder="Confimar Contraseña" required>
                         <br>
-                        <div id="boton-comprar">
-                            <button type="button" class="btn btn-lg btn-warning pull-right">Aceptar</button>
-                        </div>
+                            <button id="boton-cambiar" type="button" class="btn btn-lg btn-warning pull-right">Aceptar</button>
                     </form>
                 </div>
             </div>
@@ -69,4 +67,5 @@
         {% include 'footer.html' %}
 
     </div>
+    <script src="/static/usuario.js"></script>
     {% endblock %}

@@ -75,9 +75,9 @@ function realizarPedido($productos, $app, $database) {
         $precio_total += $precio;
     }
     
-    $nsaldo = $saldo - $precio_total; 
+    $nsaldo = $saldo - $precio_total;
     if ($nsaldo < 0.00) {
-        return;
+        return -1;
     }
     
     $affected = $database->usuarios[$_SESSION['id']]->update(array (
@@ -164,6 +164,31 @@ function disponibilidadProducto($id, $disponible, $app, $database) {
     $nproducto = $database->productos[$id]->update(array (
         "disponible" => $disponible
     ));
+}
+
+function agregarProducto($nombre, $precio, $app, $database) {
+    $producto = $database->productos()->insert(array (
+                "nombre" => $nombre,
+                "precio" => $precio,
+                "disponible" => true
+            ));
+}
+
+function cambiarPassword($passOriginal, $passNueva, $passNueva2, $app, $database) {
+    $username = $database->usuarios[$_SESSION['id']]['username'];
+    $user = new Usuario($username, $app, $database);
+
+    if(!password_verify($passOriginal, $user->password)) {
+        return -1;
+    } else if ($passNueva !== $passNueva2) {
+        return 0;
+    } else {
+        $nusuer = $database->usuarios[$_SESSION['id']]->update(array (
+            "password" => password_hash($passNueva, PASSWORD_DEFAULT)
+        ));
+
+        return 1;
+    }
 }
 
 function logOut() {
