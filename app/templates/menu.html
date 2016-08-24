@@ -1,10 +1,29 @@
-{% extends "base.html" %}
-
-{% block content %}
+{% extends "base.html" %} {% block content %}
 <div class="container">
     <div class="container" style="background-color: white;">
-         
+
         {% include 'header.html' %}
+
+        <div class="row-fluid">
+            <div class="col-md-12">
+                <h3>Información</h3>
+                <div id="tabla3">
+                    <table class="table table-responsive">
+                        <tr>
+                            <td>Los pedidos tanto para mediodía y noche de comidas específicas serán hasta las 11:00hs, pasado ese
+                                horario se tomarán como para el día siguiente.
+                                <br>
+                                Los horarios de entrega y retiro son: Para el mediodía entre las 11:50hs y las 14:30hs, y para la noche desde 19:30hs a 19:50hs
+                                <br>
+                                En caso de pedir milanesas o hamburguesas el horario de pedido podrá ser hasta una hora antes de la
+                                entrega.
+                                <br>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
 
         <div class="row-fluid">
             <div class="col-sm-6">
@@ -16,15 +35,13 @@
                             <td><strong>Precio</strong></td>
                             <td><strong>Agregar</strong></td>
                         </tr>
-                        {% for producto in productos %}
-                        {% if producto.disponible == true %}
+                        {% for producto in productos %} {% if producto.disponible == true %}
                         <tr>
                             <td>{{ producto.nombre|e }}</td>
                             <td>${{ producto.precio|e }}</td>
                             <td><button type="button" class="btn btn-info btn-sm" name="producto{{producto.id|e}}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button></td>
                         </tr>
-                        {% endif %}
-                        {% endfor %}
+                        {% endif %} {% endfor %}
                     </table>
                 </div>
             </div>
@@ -52,14 +69,14 @@
                         <div id="saldo">
                             <p>${{ usuario.saldo|e }}</p>
                         </div>
-                        
-                        
+
+
                         <form action="/compra" method="POST" id="form-compra">
                             <div id="boton-comprar">
                                 <input type="hidden" id="boton-compra" name="boton-compra">
                                 <button type="button" class="btn btn-lg btn-warning pull-right">Aceptar</button>
                             </div>
-                       </form> 
+                        </form>
                     </div>
                 </div>
             </div>
@@ -67,5 +84,4 @@
             {% include 'footer.html' %}
 
         </div>
-        <script src="/static/menu.js"></script>
-{% endblock %}
+        <script src="/static/menu.js"></script> {% endblock %}
