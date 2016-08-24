@@ -19,7 +19,7 @@
                     {% for usuario in usuarios %}
                     <tr>
                         <td>{{ usuario.codigo|e }}</td>
-                        <td>{{ usuario.nombre|e}} {{usuario.apellido|e}}</td>
+                        <td>{{ usuario.nombre|e}}</td>
                         <td>${{ usuario.saldo|e }}</td>
                         <td>{{ usuario.ultimaCompra|date("d/m/Y") }}</td>
                         <td><button type="button" name="{{ 'carga' ~ usuario.username|e }}" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-usd" aria-hidden="true"></span></button></td>

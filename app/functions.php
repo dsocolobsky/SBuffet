@@ -120,14 +120,10 @@ function registrarse($datos, $app, $database) {
         return "el usuario ya existe";
     }
     
-    $nombre = explode(" ", $datos['nombre']);
-    
-    // TODO: ARREGLAR NOMBRES Y APELLIDOS
     $entrada = $database->usuarios()->insert(array (
         'username' => $datos['usuario'],
         'password' => password_hash($datos['password'], PASSWORD_DEFAULT),
-        'nombre' => $nombre[0],
-        'apellido' => $nombre[1],
+        'nombre' => $datos['nombre'],
         'saldo' => 0.00
     ));
     

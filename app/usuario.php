@@ -6,7 +6,6 @@ class Usuario {
     public $codigo;
     public $password;
     public $nombre;
-    public $apellido;
     public $saldo;
     public $ultimaCompra;
     public $activo;
@@ -18,7 +17,6 @@ class Usuario {
         $this->codigo   = $usuario['codigo'];
         $this->password = $usuario['password'];
         $this->nombre   = $usuario['nombre'];
-        $this->apellido = $usuario['apellido'];
         $this->saldo    = $usuario['saldo'];
         
         $this->update($app, $database);

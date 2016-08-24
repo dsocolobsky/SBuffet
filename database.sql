@@ -8,8 +8,7 @@ CREATE TABLE IF NOT EXISTS usuarios (
     username VARCHAR(128) NOT NULL PRIMARY KEY,
     codigo INT AUTO_INCREMENT,
     password VARCHAR(256),
-    nombre VARCHAR(64),
-    apellido VARCHAR(128),
+    nombre VARCHAR(128),
     saldo DECIMAL(6, 2),
     UNIQUE(codigo)
 );
@@ -43,8 +42,8 @@ SET FOREIGN_KEY_CHECKS=1;
 ALTER TABLE pedidos ADD CONSTRAINT fk_pedido_usuario FOREIGN KEY (usuario) REFERENCES usuarios(username);
 ALTER TABLE pedidos ADD CONSTRAINT fk_pedido_producto FOREIGN KEY (producto) REFERENCES productos(id);
 
-INSERT IGNORE INTO usuarios (username, password, nombre, apellido, saldo) VALUES ("admin", "$2y$10$WVTAtbZ.PgR.IF04oD.vmOq/7nmd/o6A7jpqPvx/LsIeiyKlnsJE2", "Ad", "Min", 600);
-INSERT IGNORE INTO usuarios (username, password, nombre, apellido, saldo) VALUES ("dsocolobsky", "$2y$10$kDjLqzAQ8zvmZAGxaJYtausy2IxLAIbutg2.3RNQQuk8fRDnGtonO", "Dylan", "Socolobsky", 100);
+INSERT IGNORE INTO usuarios (username, password, nombre, saldo) VALUES ("admin", "$2y$10$WVTAtbZ.PgR.IF04oD.vmOq/7nmd/o6A7jpqPvx/LsIeiyKlnsJE2", "Admin", 600);
+INSERT IGNORE INTO usuarios (username, password, nombre, saldo) VALUES ("dsocolobsky", "$2y$10$kDjLqzAQ8zvmZAGxaJYtausy2IxLAIbutg2.3RNQQuk8fRDnGtonO", "Dylan Socolobsky", 100);
 
 INSERT IGNORE INTO productos (nombre, precio, disponible) VALUES ("hamburguesa", 20, true);
 INSERT IGNORE INTO productos (nombre, precio, disponible) VALUES ("milanesa", 30, true);
