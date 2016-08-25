@@ -12,6 +12,7 @@
                         <td><strong>Nombre</strong></td>
                         <td><strong>Producto</strong></td>
                         <td><strong>Precio</strong></td>
+                        <td><strong>Horario</strong></td>
                         <td><strong>Entregar</strong></td>
                     </tr>
                     {% for pedido in pendientes %}
@@ -19,6 +20,7 @@
                         <td>{{ pedido.nombre_usuario|e }}</td>
                         <td>{{ pedido.nombreProducto|e }}</td>
                         <td>{{ pedido.precio|e }}</td>
+                        <td>Mediodia (Mañana)</td>
                         <td>
                             <button type="button" name={{ 'pedido' ~ pedido.id|e}} class="btn btn-success btn-sm">Listo</button>
                         </td>
@@ -34,7 +36,7 @@
             <div id="tabla_entregados" class="table-responsive">
                 <table class="table">
                     <tr>
-                        <td><strong>Codigo</strong></td>
+                        <td><strong>Nombre</strong></td>
                         <td><strong>Producto</strong></td>
                         <td><strong>Precio</strong></td>
                         <td><strong>Fecha</strong></td>
@@ -42,7 +44,7 @@
                     </tr>
                     {% for pedido in entregados %}
                     <tr>
-                        <td>{{ pedido.codigo_usuario|e }}</td>
+                        <td>{{ pedido.nombre_usuario|e }}</td>
                         <td>{{ pedido.nombreProducto|e }}</td>
                         <td>{{ pedido.precio|e }}</td>
                         <td>{{ pedido.hora_compra|e }}</td>

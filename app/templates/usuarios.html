@@ -13,6 +13,7 @@
                         <td><strong>Nombre</strong></td>
                         <td><strong>Saldo</strong></td>
                         <td><strong>Ultima Compra</strong></td>
+                        <td><strong>Borrar</strong></td>
                         <td><strong>Carga</strong></td>
                         <td><strong>Pedido</strong></td>
                     </tr>
@@ -22,6 +23,7 @@
                         <td>{{ usuario.nombre|e}}</td>
                         <td>${{ usuario.saldo|e }}</td>
                         <td>{{ usuario.ultimaCompra|date("d/m/Y") }}</td>
+                        <td><button type="button" name={{ 'borrar' ~ usuario.username|e}} class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></td>
                         <td><button type="button" name="{{ 'carga' ~ usuario.username|e }}" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-usd" aria-hidden="true"></span></button></td>
                         {% if usuario.activo == true %}
                         <td><button type="button" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-check" aria-hidden="true"></span></button></td>
