@@ -22,7 +22,7 @@ class Pedido {
         $this->nombreProducto = $producto['nombre'];
         $this->precio = $producto['precio'];
 
-        $this->codigo_usuario = $database->usuarios[$this->usuario]['codigo'];
+        $this->nombre_usuario = $database->usuarios[$this->usuario]['nombre'];
     }
     
 }
