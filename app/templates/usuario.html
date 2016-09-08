@@ -20,7 +20,7 @@
                         <td>{{ usuario.codigo|e }}</td>
                         <td>{{ usuario.username|e }}</td>
                         <td>{{ usuario.nombre|e }}</td>
-                        <td>{{ usuario.saldo|e }}</td>
+                        <td>${{ usuario.saldo|e }}</td>
                     </tr>
                 </table>
             </div>
@@ -30,11 +30,11 @@
                     <h4><strong>Cambiar Contraseña</strong></h4>
                     <br>
                     <form action="/cambiarpassword" method="post">
-                        <input type="text" id="passOriginal" name="passOriginal" class="form-control" style="width: 60%;" placeholder="Contraseña" required>
+                        <input type="password" id="passOriginal" name="passOriginal" class="form-control" style="width: 60%;" placeholder="Contraseña" required>
                         <br>
-                        <input type="text" id="passNueva" name="passNueva" class="form-control" style="width: 60%;" placeholder="Nueva Contraseña" required>
+                        <input type="password" id="passNueva" name="passNueva" class="form-control" style="width: 60%;" placeholder="Nueva Contraseña" required>
                         <br>
-                        <input type="text" id="passNueva2" name="passNueva2" class="form-control" style="width: 60%;" placeholder="Confimar Contraseña" required>
+                        <input type="password" id="passNueva2" name="passNueva2" class="form-control" style="width: 60%;" placeholder="Confimar Contraseña" required>
                         <br>
                             <button id="boton-cambiar" type="button" class="btn btn-lg btn-warning pull-right">Aceptar</button>
                     </form>
@@ -55,7 +55,7 @@
                     <tr>
                         <td>{{ pedido.hora_compra|e }}</td>
                         <td>{{ pedido.nombreProducto|e }}</td>
-                        <td>{{ pedido.precio|e }}</td>
+                        <td>${{ pedido.precio|e }}</td>
                     </tr>
                     {% endfor %}
                 </table>
