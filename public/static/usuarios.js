@@ -14,7 +14,7 @@ $("#tabla_usuarios > table > tbody > tr").each(function (i, row) {
             buttons: [{
                 label: 'Aceptar',
                 action: function (dialog) {
-                    $.post("/borrarusuario", {id: id}).done(function (data) {
+                    $.post("/borrarusuario", { id: id }).done(function (data) {
                         dialog.close();
                         BootstrapDialog.show({
                             title: 'Usuario eliminado',

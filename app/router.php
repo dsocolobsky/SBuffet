@@ -170,6 +170,11 @@ $app->post('/productonodisponible', function ($request, $response) use($app, $da
     disponibilidadProducto($id, false, $app, $database);
 })->add($debeSerAdmin);
 
+$app->post('/borrarproducto', function ($request, $response) use($app, $database) {    
+    $id = $request->getParsedBody()['id'];
+    return $database->productos[$id]->delete();
+})->add($debeSerAdmin);
+
 $app->post('/cambiarpassword', function ($request, $response) use($app, $database) {
     $passOriginal = $request->getParsedBody()['passOriginal'];
     $passNueva = $request->getParsedBody()['passNueva'];

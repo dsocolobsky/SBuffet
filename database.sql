@@ -45,7 +45,7 @@ ALTER TABLE pedidos ADD CONSTRAINT fk_pedido_producto FOREIGN KEY (producto) REF
 INSERT IGNORE INTO usuarios (username, password, nombre, saldo) VALUES ("admin", "$2y$10$WVTAtbZ.PgR.IF04oD.vmOq/7nmd/o6A7jpqPvx/LsIeiyKlnsJE2", "Admin", 600);
 INSERT IGNORE INTO usuarios (username, password, nombre, saldo) VALUES ("dsocolobsky", "$2y$10$kDjLqzAQ8zvmZAGxaJYtausy2IxLAIbutg2.3RNQQuk8fRDnGtonO", "Dylan Socolobsky", 100);
 
-INSERT IGNORE INTO productos (nombre, precio, disponible) VALUES ("hamburguesa", 20, true);
+/*INSERT IGNORE INTO productos (nombre, precio, disponible) VALUES ("hamburguesa", 20, true);
 INSERT IGNORE INTO productos (nombre, precio, disponible) VALUES ("milanesa", 30, true);
 INSERT IGNORE INTO productos (nombre, precio, disponible) VALUES ("pizza", 15.25, true);
-INSERT IGNORE INTO productos (nombre, precio, disponible) VALUES ("pollo", 40, false);
+INSERT IGNORE INTO productos (nombre, precio, disponible) VALUES ("pollo", 40, false);*/
