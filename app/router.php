@@ -179,4 +179,9 @@ $app->post('/cambiarpassword', function ($request, $response) use($app, $databas
     return $response->write($val);
 })->add($debeLoggearse);
 
+$app->post('/borrarusuario', function ($request, $response) use($app, $database) {    
+    $usuario = $request->getParsedBody()['id'];
+    return $database->usuarios[$usuario]->delete();
+})->add($debeSerAdmin);
+
 ?>
