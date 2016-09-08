@@ -48,3 +48,9 @@ body {
 .dialog-codigo {
     margin-top: 120px;
 }
+
+#texto-bienvenido {
+    background-color: #5bc0de;
+    text-align: center;
+    color: white;
+}
