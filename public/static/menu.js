@@ -47,8 +47,6 @@ $('body').on('click', function () {
 $('#boton-comprar > button').unbind('click').bind('click', function () {
     if (total > 0) {
 
-        console.log("comprando");
-
         $("#tabla2 > table > tbody > tr").each(function (i, row) {
             if (i != 0) {
                 var button = $(this).find("td").find("button");

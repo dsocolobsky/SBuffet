@@ -73,7 +73,7 @@ $app->post('/compra', function ($request, $response) use($app, $database) {
     $productos = $request->getParsedBody()['productos'];
     $horario = $request->getParsedBody()['horario'];
     $val = realizarPedido($productos, $horario, $app, $database);
-    return $response->write(var_dump($horario));
+    return $response->write($val);
 })->add($debeLoggearse);
 
 $app->get('/pedidos', function ($request, $response) use($app, $database) {

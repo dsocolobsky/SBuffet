@@ -82,22 +82,21 @@ function realizarPedido($productos, $horario, $app, $database) {
         }
     }
 
-    if ($horario == "mediodia") {
+    if ($horario === "mediodia") {
         if(date('H') < 11) {
             $horarioEntrega = new DateTime('today 11am');
         } else {
             $horarioEntrega = new DateTime('tomorrow 11am');
         }
-    } else if ($horario == "noche") {
+    } else if ($horario === "noche") {
         if(date('H') < 11) {
-            $horarioEntrega = new DateTime('today 19pm');
-            /*if ($estaDisponible == true) {
-                
-            } else {
-                $horarioEntrega = new DateTime('tomorrow 19pm');
-            }*/
+            $horarioEntrega = new DateTime('today 7pm');
         } else {
-            $horarioEntrega = new DateTime('tomorrow 19pm');
+            if ($estaDisponible === true) {
+                $horarioEntrega = new DateTime('today 7pm');
+            } else {
+                $horarioEntrega = new DateTime('tomorrow 7pm');
+            }
         }
     }
     
