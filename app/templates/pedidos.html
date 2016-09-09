@@ -7,26 +7,7 @@
         <div class="col-sm-6">
             <h3>Pendientes</h3>
             <div id="tabla_pendientes">
-                <table class="table table-responsive">
-                    <tr>
-                        <td><strong>Nombre</strong></td>
-                        <td><strong>Producto</strong></td>
-                        <td><strong>Precio</strong></td>
-                        <td><strong>Horario</strong></td>
-                        <td><strong>Entregar</strong></td>
-                    </tr>
-                    {% for pedido in pendientes %}
-                    <tr>
-                        <td>{{ pedido.nombre_usuario|e }}</td>
-                        <td>{{ pedido.nombreProducto|e }}</td>
-                        <td>${{ pedido.precio|e }}</td>
-                        <td>{{ pedido.horario|e }}</td>
-                        <td>
-                            <button type="button" name={{ 'pedido' ~ pedido.id|e}} class="btn btn-success btn-sm">Listo</button>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </table>
+                
             </div>
         </div>
 

@@ -86,6 +86,14 @@ $app->get('/pedidos', function ($request, $response) use($app, $database) {
     ));
 })->add($debeSerAdmin);
 
+$app->get('/tablapedidos', function ($request, $response) use($app, $database) {
+    $pendientes = obtenerPedidosActivos($app, $database);
+    
+    return $this->view->render($response, 'tablapedidos.html', array (
+        'pendientes' => $pendientes,
+    ));
+})->add($debeSerAdmin);
+
 $app->get('/usuarios', function ($request, $response) use($app, $database) {
     $usuarios = obtenerUsuarios($app, $database);
     $codigos = obtenerCodigos($app, $database);
