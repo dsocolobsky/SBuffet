@@ -8,6 +8,8 @@ require '../app/usuario.php';
 require '../app/pedido.php';
 require '../app/codigo.php';
 
+date_default_timezone_set('America/Argentina/Buenos_Aires');
+
 $config['displayErrorDetails'] = true;
 $config['base_url'] = "app/";
 

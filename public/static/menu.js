@@ -7,7 +7,7 @@ $("#tabla > table > tbody > tr").each(function (i, row) {
     var button = $(this).find("td").find("button");
     button.unbind('click').bind('click', function () {
         var nombre = $(this).parent().parent().find("td").eq(0).html();
-        var precio = $(this).parent().parent().find("td").eq(1).html();
+        var precio = $(this).parent().parent().find("td").eq(2).html();
         var id = $(this).attr("name").replace("producto", "");
 
         var elem = [
@@ -60,7 +60,9 @@ $('#boton-comprar > button').unbind('click').bind('click', function () {
 
         var jproductos = JSON.stringify(productos);
 
-        $.post("/compra", { productos: productos })
+        var horario = $('input[name=horario]:checked').val();
+
+        $.post("/compra", { productos: productos, horario: horario })
             .done(function (data) {
                 console.log(data);
                 if (data == -1) {

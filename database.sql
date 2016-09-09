@@ -28,6 +28,7 @@ CREATE TABLE IF NOT EXISTS pedidos (
     usuario VARCHAR(128) NOT NULL,
     producto INT NOT NULL,
     hora_compra TIMESTAMP,
+    horario_entrega TIMESTAMP,
     activo BOOLEAN,
     guardado BOOLEAN
 );

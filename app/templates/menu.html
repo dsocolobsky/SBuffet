@@ -10,13 +10,12 @@
                 <div id="tabla3">
                     <table class="table table-responsive">
                         <tr>
-                            <td>Los pedidos tanto para mediodía y noche de comidas específicas serán hasta las 11:00hs, pasado ese
-                                horario se tomarán como para el día siguiente.
-                                <br>
-                                Los horarios de entrega y retiro son: Para el mediodía entre las 11:50hs y las 14:30hs, y para la noche desde 19:30hs a 19:50hs
-                                <br>
-                                En caso de pedir milanesas o hamburguesas el horario de pedido podrá ser hasta una hora antes de la
-                                entrega.
+                            <td>Los pedidos tanto para mediodía y noche de comidas específicas serán hasta las 11:00hs, pasado
+                                ese horario se tomarán como para el día siguiente.
+                                <br> Los horarios de entrega y retiro son: Para el mediodía entre las 11:50hs y las 14:30hs,
+                                y para la noche desde 19:30hs a 19:50hs
+                                <br> En caso de pedir milanesas o hamburguesas el horario de pedido podrá ser hasta una hora
+                                antes de la entrega.
                                 <br>
                             </td>
                         </tr>
@@ -32,12 +31,16 @@
                     <table class="table table-responsive">
                         <tr>
                             <td><strong>Producto</strong></td>
+                            <td><strong>Horario para encargar</strong></td>
                             <td><strong>Precio</strong></td>
                             <td><strong>Agregar</strong></td>
                         </tr>
                         {% for producto in productos %} {% if producto.stock == true %}
                         <tr>
                             <td>{{ producto.nombre|e }}</td>
+                            <td>
+                                {% if producto.disponibilidad == true %} Mediodia y Noche {% else %} Mediodia {% endif %}
+                            </td>
                             <td>${{ producto.precio|e }}</td>
                             <td><button type="button" class="btn btn-info btn-sm" name="producto{{producto.id|e}}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button></td>
                         </tr>
@@ -62,14 +65,27 @@
                     <div class="well clearfix">
 
                         <div class="dropdown pull-right" style="margin-top: 18px;">
-                            <button class="btn btn-lg btn-info dropdown-toggle" type="button" id="entrega" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <button class="btn btn-lg btn-info dropdown-toggle" type="button" id="entrega" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="true">
                                 Entrega
                                 <span class="glyphicon glyphicon-triangle-bottom" style="font-size: 15px;"></span>
                             </button>
+                            
                             <ul class="dropdown-menu" aria-labelledby="entrega">
-                                <li><a href="#"><h5>Mediodia</h5></a></li>
-                                <li><a href="#"><h5>Noche</h5></a></li>
+                                <form id="formhorario">
+                                <li>
+                                    <a href="#">
+                                        <label>Mediodia &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<input type="radio" name="horario" value="mediodia"></label>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <label>Noche &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<input type="radio" name="horario" value="noche"></label>
+                                    </a>
+                                </li>
+                                </form>
                             </ul>
+                            
                         </div>
 
                         <h3>Total a pagar:</h3>

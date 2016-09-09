@@ -66,9 +66,40 @@ function obtenerHistorialPedidosUsuario($usuario, $app, $database) {
     return $pedidos;
 }
 
-function realizarPedido($productos, $app, $database) {
+function realizarPedido($productos, $horario, $app, $database) {
     $saldo = $database->usuarios[$_SESSION['id']]['saldo'];
     $precio_total = 0.00;
+
+    $puederealizarlo = true;
+    $horarioEntrega = null;
+    $estaDisponible = true;
+
+    foreach ($productos as $producto) {
+        $disponibilidad = $database->productos[$producto]['disponibilidad'];
+        if ($disponibilidad == false) {
+            $estaDisponible = false;
+            break;
+        }
+    }
+
+    if ($horario == "mediodia") {
+        if(date('H') < 11) {
+            $horarioEntrega = new DateTime('today 11am');
+        } else {
+            $horarioEntrega = new DateTime('tomorrow 11am');
+        }
+    } else if ($horario == "noche") {
+        if(date('H') < 11) {
+            $horarioEntrega = new DateTime('today 19pm');
+            /*if ($estaDisponible == true) {
+                
+            } else {
+                $horarioEntrega = new DateTime('tomorrow 19pm');
+            }*/
+        } else {
+            $horarioEntrega = new DateTime('tomorrow 19pm');
+        }
+    }
     
     foreach ($productos as $producto) {
         $precio = $database->productos[$producto]['precio'];
@@ -89,6 +120,7 @@ function realizarPedido($productos, $app, $database) {
                 "usuario" => $_SESSION['id'],
                 "producto" => $producto,
                 "hora_compra" => new NotORM_Literal("NOW()"),
+                "horario_entrega" => $horarioEntrega,
                 "activo" => true,
                 "guardado" => false
             ));
