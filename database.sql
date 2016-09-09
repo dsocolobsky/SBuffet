@@ -18,7 +18,8 @@ CREATE TABLE IF NOT EXISTS productos (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(256),
     precio DECIMAL(5, 2),
-    disponible BOOLEAN
+    disponibilidad BOOLEAN,
+    stock BOOLEAN
 );
 
 DROP TABLE IF EXISTS pedidos;

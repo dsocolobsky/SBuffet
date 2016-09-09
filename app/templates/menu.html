@@ -35,7 +35,7 @@
                             <td><strong>Precio</strong></td>
                             <td><strong>Agregar</strong></td>
                         </tr>
-                        {% for producto in productos %} {% if producto.disponible == true %}
+                        {% for producto in productos %} {% if producto.stock == true %}
                         <tr>
                             <td>{{ producto.nombre|e }}</td>
                             <td>${{ producto.precio|e }}</td>

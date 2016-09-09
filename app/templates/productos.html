@@ -13,7 +13,7 @@
                         <td><strong>Producto</strong></td>
                         <td><strong>Precio</strong></td>
                         <td><strong>Borrar</strong></td>
-                        <td><strong>Disponibilidad</strong></td>
+                        <td><strong>Stock</strong></td>
                     </tr>
                     {% for producto in productos %}
                     <tr>
@@ -21,10 +21,10 @@
                         <td>${{ producto.precio|e }}</td>
                         <td><button type="button" name="{{ 'borrar' ~ producto.id|e }}" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></td>
                         <td>
-                        {% if producto.disponible == true %}
-                            <button type="button" name="{{ 'disponible' ~ producto.id|e }}" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-check" aria-hidden="true"></span></button>
+                        {% if producto.stock == true %}
+                            <button type="button" name="{{ 'stock' ~ producto.id|e }}" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-check" aria-hidden="true"></span></button>
                         {% else %}
-                            <button type="button" name="{{ 'nodisponible' ~ producto.id|e }}" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-unchecked" aria-hidden="true"></span></button>
+                            <button type="button" name="{{ 'vacio' ~ producto.id|e }}" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-unchecked" aria-hidden="true"></span></button>
                         {% endif %}
                         </td>
                     </tr>

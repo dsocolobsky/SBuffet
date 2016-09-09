@@ -39,6 +39,31 @@ $("#tabla_productos > table > tbody > tr").each(function (i, row) {
     });
 });
 
+/* Producto No Stock */
+$("#tabla_productos > table > tbody > tr").each(function (i, row) {
+    var button = $(this).find("td").find('button[name*="stock"]');
+
+    button.unbind('click').bind('click', function () {
+        var id = $(this).attr("name").replace("stock", "");
+
+        $.post("/productonodisponible", {id: id}).done(function (data) {
+            window.location.replace("/productos")
+        })
+    });
+});
+
+/* Producto Stock */
+$("#tabla_productos > table > tbody > tr").each(function (i, row) {
+    var button = $(this).find("td").find('button[name*="vacio"]');
+
+    button.unbind('click').bind('click', function () {
+        var id = $(this).attr("name").replace("vacio", "");
+
+        $.post("/productodisponible", {id: id}).done(function (data) {
+            window.location.replace("/productos")
+        })
+    });
+});
 
 $('#boton-agregar > button').unbind('click').bind('click', function () {
     html_final = $.get("/agregarproducto")

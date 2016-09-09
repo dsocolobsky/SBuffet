@@ -103,8 +103,9 @@ $app->get('/agregarproducto', function ($request, $response) use($app, $database
 $app->post('/agregarproducto', function ($request, $response) use($app, $database) {
     $nombre = $request->getParsedBody()['nombre'];
     $precio = $request->getParsedBody()['precio'];
+    $disponibilidad = $request->getParsedBody()['disponibilidad'];
     
-    agregarProducto($nombre, $precio, $app, $database);
+    agregarProducto($nombre, $precio, $disponibilidad, $app, $database);
 
     return $response->withStatus(302)->withHeader('Location', '/productos');
 })->add($debeSerAdmin);

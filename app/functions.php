@@ -156,17 +156,24 @@ function cargarSaldo($usuario, $saldo, $app, $database) {
     return $nsaldo;
 }
 
-function disponibilidadProducto($id, $disponible, $app, $database) {
+function disponibilidadProducto($id, $stock, $app, $database) {
     $nproducto = $database->productos[$id]->update(array (
-        "disponible" => $disponible
+        "stock" => $stock
     ));
 }
 
-function agregarProducto($nombre, $precio, $app, $database) {
+function agregarProducto($nombre, $precio, $disponibilidad, $app, $database) {
+    if ($disponibilidad == null) {
+        $disponibilidad = false;
+    } else {
+        $disponibilidad = true;
+    }
+
     $producto = $database->productos()->insert(array (
                 "nombre" => $nombre,
                 "precio" => $precio,
-                "disponible" => true
+                "disponibilidad" => $disponibilidad,
+                "stock" => true
             ));
 }
 
