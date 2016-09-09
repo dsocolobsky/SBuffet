@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container" style="background-color: white;">
+    
+    {% include 'header-buffet.html' %}
+
+    <div class="row-fluid">
+        <div class="col-sm-6">
+
+            <div id="caja">
+                <div class="well clearfix">
+                    <h4><strong>Cambiar Contraseña</strong></h4>
+                    <br>
+                    <form action="/cambiarpassword" method="post">
+                        <input type="password" id="passOriginal" name="passOriginal" class="form-control" style="width: 60%;" placeholder="Contraseña" required>
+                        <br>
+                        <input type="password" id="passNueva" name="passNueva" class="form-control" style="width: 60%;" placeholder="Nueva Contraseña" required>
+                        <br>
+                        <input type="password" id="passNueva2" name="passNueva2" class="form-control" style="width: 60%;" placeholder="Confimar Contraseña" required>
+                        <br>
+                            <button id="boton-cambiar" type="button" class="btn btn-lg btn-warning pull-right">Aceptar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        {% include 'footer.html' %}
+
+    </div>
+    <script src="/static/administrador.js"></script>
+    {% endblock %}

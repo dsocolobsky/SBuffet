@@ -96,6 +96,14 @@ $app->get('/usuarios', function ($request, $response) use($app, $database) {
     ));
 })->add($debeSerAdmin);
 
+$app->get('/administrador', function ($request, $response) use($app, $database) {
+    $usuarios = obtenerUsuarios($app, $database);
+    $codigos = obtenerCodigos($app, $database);
+    
+    return $this->view->render($response, 'administrador.html', array (
+    ));
+})->add($debeSerAdmin);
+
 $app->get('/agregarproducto', function ($request, $response) use($app, $database) {
     return $this->view->render($response, 'nuevoproducto.html', array (
     ));
