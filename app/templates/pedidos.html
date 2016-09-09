@@ -19,8 +19,8 @@
                     <tr>
                         <td>{{ pedido.nombre_usuario|e }}</td>
                         <td>{{ pedido.nombreProducto|e }}</td>
-                        <td>{{ pedido.precio|e }}</td>
-                        <td>Mediodia (Mañana)</td>
+                        <td>${{ pedido.precio|e }}</td>
+                        <td>{{ pedido.horario|e }}</td>
                         <td>
                             <button type="button" name={{ 'pedido' ~ pedido.id|e}} class="btn btn-success btn-sm">Listo</button>
                         </td>

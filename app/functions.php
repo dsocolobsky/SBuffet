@@ -35,7 +35,7 @@ function obtenerCodigos($app, $database) {
 
 function obtenerPedidosActivos($app, $database) {
     $pedidos = array();
-    $tabla_pedidos = $database->pedidos('activo', true)->order('usuario ASC');
+    $tabla_pedidos = $database->pedidos('activo', true)->order('horario_entrega ASC, usuario ASC');
     
     foreach ($tabla_pedidos as $pedido) {
         array_push($pedidos, new Pedido($pedido, $app, $database));
