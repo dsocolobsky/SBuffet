@@ -30,7 +30,7 @@ class Pedido {
         $dia = date('d', strtotime($entregaTime));
         $diaHoy = date('d');
         $tomorrow = new DateTime('tomorrow 7pm');
-        $diaTomorrow = date('d', strtotime($tomorrow->format('Y-m-d H:i:s')));
+        $diaTomorrow = $tomorrow->format('d');
         $hora = date('G', strtotime($entregaTime));
 
         if ($dia == $diaHoy) {
