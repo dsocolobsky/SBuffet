@@ -29,12 +29,17 @@ class Pedido {
         $entregaTime = $pedido['horario_entrega'];
         $dia = date('d', strtotime($entregaTime));
         $diaHoy = date('d');
+        $tomorrow = new DateTime('tomorrow 7pm');
+        $diaTomorrow = date('d', strtotime($tomorrow->format('Y-m-d H:i:s')));
         $hora = date('G', strtotime($entregaTime));
 
         if ($dia == $diaHoy) {
             $this->horario = "Hoy ";
-        } else {
+        } else if ($dia == $diaTomorrow) {
             $this->horario = "Mañana ";
+        } else {
+            $this->horario = "RETRASADO";
+            return;
         }
 
         if ($hora == "11") {
