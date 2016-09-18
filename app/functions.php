@@ -67,6 +67,13 @@ function obtenerHistorialPedidosUsuario($usuario, $app, $database) {
 }
 
 function realizarPedido($productos, $horario, $app, $database) {
+    $hoy = new DateTime();
+    $dia = $hoy->format('l');
+    $hora = $hoy->format('H');
+    if (esFinde($dia, $hora)) {
+        return -3;
+    }
+
     $saldo = $database->usuarios[$_SESSION['id']]['saldo'];
     $precio_total = 0.00;
 
@@ -124,6 +131,16 @@ function realizarPedido($productos, $horario, $app, $database) {
                 "guardado" => false
             ));
     }
+}
+
+function esFinde($dia, $hora) {
+    if ($dia == 'Saturday' || $dia == 'Sunday') {
+        return true;
+    } else if ($dia == 'Friday' && $hora > 20) {
+        return true;
+    }
+
+    return false;
 }
 
 function comprobarLogin($usuario, $password, $app, $database) {

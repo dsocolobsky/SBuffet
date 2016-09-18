@@ -72,6 +72,15 @@ $('#boton-comprar > button').unbind('click').bind('click', function () {
                             window.location.replace("/");
                         }
                     });
+                } else if (data == -3) {
+                    BootstrapDialog.show({
+                        title: 'Informacion',
+                        message: 'No puede realizar compras durante los fines de semana',
+                        type: BootstrapDialog.TYPE_WARNING,
+                        onhidden: function (dialogRef) {
+                            window.location.replace("/");
+                        }
+                    });
                 } else {
                     BootstrapDialog.show({
                         title: 'Informacion',
