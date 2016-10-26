@@ -3,3 +3,4 @@
 /logs/
 /public/false/
 .vscode/launch.json
+composer.lock
